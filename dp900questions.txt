@@ -1,5 +1,41 @@
 https://pts.measureup.com/web/index.php#dashboard.php
+------------------------------------------------------------------------------------
 Describe core data concepts (31 questions)
+------------------------------------------------------------------------------------
+https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-overview
+https://learn.microsoft.com/en-us/azure/architecture/data-guide/big-data/non-relational-data
+https://learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/2-data-formats
+https://learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/3-file-storage
+https://learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/4-databases
+https://learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/5-transactional-data-processing
+https://en.wikipedia.org/wiki/Relational_database
+https://learn.microsoft.com/en-us/sql/relational-databases/indexes/indexes?view=sql-server-ver15
+https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-overview
+https://learn.microsoft.com/en-us/azure/architecture/data-guide/big-data/non-relational-data
+https://learn.microsoft.com/en-us/training/modules/explore-provision-deploy-non-relational-data-services-azure/
+https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/relational-vs-nosql-data
+https://learn.microsoft.com/en-us/azure/mariadb/overview
+https://www.databricks.com/glossary/what-is-parquet
+https://en.wikipedia.org/wiki/Graph_database
+https://learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/2-understand-relational-data
+https://learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/3-normalization
+https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/online-transaction-processing
+
+Database Administrator
+Data Analyst
+Data Scientist
+Data Engineer
+
+------------------------------------------------------------------------------------
 Identify considerations for relational data on Azure (30 questions)
+------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
 Describe considerations for working with non-relational data on Azure (20 questions)
+------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
 Describe an analytics workload on Azure (37 questions)
+------------------------------------------------------------------------------------
+
+
