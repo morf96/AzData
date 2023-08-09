@@ -25,6 +25,7 @@ Database Administrator
 Data Analyst
 Data Scientist
 Data Engineer
+https://learn.microsoft.com/en-us/training/modules/explore-roles-responsibilities-world-of-data/2-explore-job-roles
 
 ------------------------------------------------------------------------------------
 Identify considerations for relational data on Azure (30 questions)
