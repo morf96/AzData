@@ -30,10 +30,30 @@ https://learn.microsoft.com/en-us/training/modules/explore-roles-responsibilitie
 ------------------------------------------------------------------------------------
 Identify considerations for relational data on Azure (30 questions)
 ------------------------------------------------------------------------------------
+https://binaryterms.com/relational-data-model.html
+https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/relational-vs-nosql-data
+https://learn.microsoft.com/en-us/training/modules/describe-concepts-of-relational-data/2-explore-characteristics
+https://learn.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15
+https://learn.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description
+https://learn.microsoft.com/en-us/sql/relational-databases/views/views?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints?view=sql-server-ver15&viewFallbackFrom=sql-server-ver1
+https://learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/5-database-objects
+https://learn.microsoft.com/en-us/azure/storage/tables/table-storage-overview
+https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-overview
+https://learn.microsoft.com/en-us/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints?view=sql-server-ver15
+https://learn.microsoft.com/en-us/training/modules/describe-concepts-of-relational-data/2-explore-characteristics
+https://learn.microsoft.com/en-us/training/modules/describe-concepts-of-relational-data/3-explore-structures
+
 
 ------------------------------------------------------------------------------------
 Describe considerations for working with non-relational data on Azure (20 questions)
 ------------------------------------------------------------------------------------
+
+
+
+
+
 
 ------------------------------------------------------------------------------------
 Describe an analytics workload on Azure (37 questions)
