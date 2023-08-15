@@ -49,7 +49,142 @@ https://learn.microsoft.com/en-us/training/modules/describe-concepts-of-relation
 ------------------------------------------------------------------------------------
 Describe considerations for working with non-relational data on Azure (20 questions)
 ------------------------------------------------------------------------------------
+1. Azure Blob is the only Azure storage option that supports access tiers. The defualt is the Hot tier.
+The cool tier is optimised for data that will be stored for at leaset 30 days. The Archive storage for data will be stored at least for 180 days.
+Archive tier data requires to be rehydrated to a Hot or a Cool tier for access.
+Azure blos supports tww performance tiers. The Standard performance tier uses hard disk based storage media. 
+The Permium tier uses solid state drive media. The Standard and the Premium options are also supported for Azure File Storage and Azure SQL Database.
+Azure Table and Azure File do not support access tiers. 
+Access tiers is a featre supported through Cosmos DB APIs. 
+Azure Table and Azure File are distinct storage types and are not implemented though Cosmosd DB. 
+Table storage is used for storing structured non-relational data. File storage provides fline storage with shared access similar to file server.
 
+2. Azure File Storage supports direct mounting by Windows, macOS and Linux.
+Azure File storage is not recommended storage solution for key/value storage implementation. 
+Azure Cosmos DB Core (SQL) API suitable for key/value storage also supported by Azure Table storage and Cosmos Table API.
+The large file share and premium file shares support LRS and ZRS only in Azure File Storage.
+
+5. Which two elements compose a key in Azure Table Storage?
+- Partition Key
+- Row Key
+Data stored in Aure Table storage is referred to as rows and columns and it forms a table in which the columns may vary according to each row.
+The rows in the Table split into partitions and related rows are grouped based on common property. This common property is called Partition key.
+The partition key identifies the partititon inside the Azure table storage and a row key is used to uniquely identify each row in a given partititon.
+A Value does not compose a key in Azure table storage, rather represents other properties related to a given key, provides data that is returned when query a key.
+Unlike in a relational table each row can have different columns of data. 
+= > The Table service does not enforce any schema for tables, so two entities in the same table may have different sets of properties.
+System Properties: An entity always has the following system properties:
+PartitionKey property
+RowKey property
+Timestamp property 
+
+6. Azure Table Storage stores semi-structured data into a key/value format. This means it stores data into a rows and columns format but unlike 
+relational databases, each row has a key and each column contains entire data value.
+Understanding the Table service data model: https://learn.microsoft.com/en-us/rest/api/storageservices/Understanding-the-Table-Service-Data-Model
+The storage account must always be specified in the request URI. The base URI for accessing the Table service is as follows:
+https://myaccount.table.core.windows.net, Tables, Entities, and Properties: 
+Tables store data as collections of entities: 
+Entities are similar to rows. An entity has a primary key and a set of properties. 
+A property is a name, typed-value pair, similar to a column.
+
+8. Enable hierarchical namespace: To implment folder and directory level storage security.
+Enabling hierarchical namespace allows to organise Blob containers in folders and directories allowing to define POSIX-complience permissions and RBAC inside containers.
+Access control lists (ACLs) in Azure Data Lake Storage Gen2: https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control
+
+10. By defualt in a Blob storage, Containers act like folders, and logically group related blob files together.
+
+11. Appropriate Cosmosd DB APIs:
+Gremlin API for a new application that analyses detailed relationship information for non-relational data.
+Cassandra API for moving column-family format data to the cloud to support an existing application.
+Core (SQL) API for moving application data to the cloud that uses semi-structred documents to store dta.
+Core (SQL) API for a new application that loads key/value format data from multiple sensors.
+The Core (SQL) API is used to store semi-structured data in a document and uses SQL-like query language to manipulate the data stored in the documents.
+    This includes applications with key/value data. Table API is also supported, but Core (SQL) API is recommended as it provides improved indexing and richer query options.
+Non-relational data and NoSQL: https://learn.microsoft.com/en-us/azure/architecture/data-guide/big-data/non-relational-data
+Welcome to Azure Cosmos DB: https://learn.microsoft.com/en-us/azure/cosmos-db/introduction
+Work with Azure Cosmos DB: https://learn.microsoft.com/en-us/training/modules/work-with-cosmos-db/
+Identify Azure Cosmos DB APIs: https://learn.microsoft.com/en-us/training/modules/explore-non-relational-data-stores-azure/3-cosmos-db-apis
+
+12. Cosmos DB general resource hierarch used by all APIs:
+Azure Cosmos DB for NoSQL client library for .NET: https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/quickstart-dotnet?tabs=azure-portal%2Cwindows%2Cpasswordless%2Csign-in-azure-cli
+There is no blob in the Azure Cosmos DB storage hierarchy.
+A storage blob has its own hierarchy of a storage account, container, blob, and items being stored in the blob. 
+Azure Cosmos account > (topmost in the resource hierarchy)
+    Datbase >
+        Container > (create API specific containrs = tables, collections, graphs)
+            Item ()
+
+13. The Cassandra API, Cosmos DB API type for Columnar-data (non-relational.)
+        This API is compatible with Apache Cassandra databases, which are column-family databases used to store columnar data consisting of row identifiers and a group of information stored in a column. 
+        Each group of information is stored in independent data tructures named keyspcaes.
+    The Germlin API, Cosmos DB API type for Graph data (non-relational.)
+        This API is compatible with Gremlin, which is a graph database that stores nodes andedges for complex relationships among entities.
+    The Core API, Cosmos DB API type for JSON documents (non-relational.)
+        A document usually contains all data from an entity and each document can have different fields of data.
+    The Table API is for storing key-value data organised as rows and columns.
+        This Cosmos DB API type is compatible with Azure table storage.
+Choose an API in Azure Cosmos DB: https://learn.microsoft.com/en-us/azure/cosmos-db/choose-api
+
+14.
+Supports multi-region writes: Cosmos DB API only.
+Supports multi-region read replicas: Cosmos DB Table API and Azure Table Storage.
+
+15. You work for a company that is developing a new massively multiplayer online (MMO) game, which will be launched in 20 countries next year.
+The data architects have opted to use Azure Cosmos DB as the game's database tier to support geographies and low latency for read and writes.
+Common Azure Cosmos DB use cases: https://learn.microsoft.com/en-us/azure/cosmos-db/use-cases
+Azure Cosmos DB is a PaaS applciation need some Database Administration. It is a NoSQL database support semi-structured data that used by online games.
+Azure Cosmos DB supports multiple APIs such as Cassandra, Gremlin, Table, ...
+
+17. Azure Cosmos DB allows simpler queries to retrieve data than a relational database.
+Denormalisation reduces the number of tables within a data model because all attributes from an entity are stored together rather than in different tables.
+With fewer tables data read or retreival queries become less complex due to the reduced tabe joins needed.
+Cosmos DB supports denormalisation of data which increases the need for data dullication but also reduces the complexity of the schema.
+
+19. Identify query syntax per Cosmosd DB API type.
+Is this MondoDB API, Table API, Cassandra API, Core API, Gremlin API?
+
+:> g.V().hasLabel('person').order().by('firstname',decr)
+
+The query refers to the Gremlin API syntax includes funtions to operate on nodes (instances of data enitities) and edges (relationships between nodes), enabling 
+users to navigate around the complex graph structure. The g. in the example query stands for graph. 
+The examaple statement will retrieve person vertices in descending order of their first names.
+
+Core API, aslo called SQL API uses SQL syntax with keywords in capital letters, spaces ad quotes for string values:
+
+SELECT FirstName, LastName
+FROM PERSON
+WERE IsChild = true
+
+The query returns with the First and the Last name columns of all rows on the person table marked as children.
+
+The Table API allows manipulation of keyvalue pair data, example query:
+https://<mytableendpoint>/People(PrtititonKey='Harp',RowKey='Walter')
+
+The query retrieve from the Poeple table by filtering on the PartititonKey Harp and the RowKey Walter
+
+Cassandra API similar to SQL syntax.
+
+Mondo DB API uses MQL object-oriented syntax:
+
+db.people.find({"isChile":"true"})
+
+The query retrieves people that are children.
+
+Quickstarts:
+Query data in Azure Cosmos DB for NoSQL: https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/tutorial-query
+Query Azure Cosmos DB by using the API for Table: https://learn.microsoft.com/en-us/azure/cosmos-db/table/tutorial-query
+Query Azure Cosmos DB for Gremlin by using Gremlin: https://learn.microsoft.com/en-us/azure/cosmos-db/gremlin/tutorial-query
+
+
+20. Implementing an Azure Cosmos DB Data Store will need to use several APIs for each non-realtional data store implementation:
+Key/value store: Table API or Core API
+Column family database: Cassandra API only
+Graph database: Gremlin API only
+
+Key-vaule stores are highly optimised for single lookup scenarios, although Core API implements a document-based databse to store JSON-like semi-structured data.
+Using Core API for new applications use a document with and item ID and a single value field to represent a key-value store.
+
+Azure Cosmos DB Cassandra API is suitable to represent weather or time-series activity, in a column family databse.
 
 
 
