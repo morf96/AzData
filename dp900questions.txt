@@ -58,5 +58,77 @@ Describe considerations for working with non-relational data on Azure (20 questi
 ------------------------------------------------------------------------------------
 Describe an analytics workload on Azure (37 questions)
 ------------------------------------------------------------------------------------
+1. Azure Synapse Analytics performs complex queries and aggregations on a large amount of relational data.
+Provision Synapse SQL pools to quickly execute complex queries accross multiple computer nodes.
+MPP > Massively Parallel Processing architecture.
+Azure Synapse Analytics: https://learn.microsoft.com/en-us/azure/synapse-analytics/overview-what-is
+Dedicated SQL pool (formerly SQL DW) architecture in Azure Synapse Analytics: https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/massively-parallel-processing-mpp-architecture
+Analysis Services tabular data in Power BI Desktop: https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-analysis-services-tabular-data
+Azure Data Lake Storage Gen2: https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction
+OLTP: https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/online-transaction-processing
+
+2. Azure HDInsight is a big data processing service which is used to provision and manage a cluster of open-source analytics solutions such as Apache Spark, Hadoop, Kafka.
+Azure Databricks is a complete analytics platform for big data processing, streaming, and machine learning, optimised for Cloud services on top of Apache Spark.
+Azure Analysis Services is a service used to build multidimentional or tabular models using OLAP queries, can combine data from Azure Synapse Analytics, Azude Data Lake Store, Azure Cosmos DB.
+Azure Analysis Services: https://learn.microsoft.com/en-us/azure/analysis-services/analysis-services-overview
+Databricks: https://learn.microsoft.com/en-us/azure/databricks/introduction/
+Azure HDInsight: https://learn.microsoft.com/en-us/azure/hdinsight/hdinsight-overview
+
+3.Databricks can handle batch and stream processing. Complete platform for Big Data procesing and Machine Learning.
+Real-time data processin and event streaming from Azure Event Hubs.
+Interactive workspace for exploration, data visualisation, collaboration and can run notebooks in R, Python, Scala, SQL.
+Azure Event Hubs: https://learn.microsoft.com/en-us/azure/databricks/structured-streaming/streaming-event-hubs
+
+4.Azure Data Lake store raw data. 
+Azure Synapse Analytics used to model and serve data. Can load relational data ingested from Azure Data Factory using Synapse SQL pool.
+Azure Synapse Analytics can read unstructured data from Azure Data Lake storage using Polybase. Then combine relational and unstructured data, perfom analytics.
+Data Warehouse: https://learn.microsoft.com/en-us/azure/architecture/solution-ideas/articles/enterprise-data-warehouse 
+
+5.Azure Data Lake built on top of Azure Blob Storage.
+Azure Data Lake storage enables hierachical namespace compatible with Hadoop Distributed File System(HDFS).
+Azure Data Lake storage provides a layer to access Azure Blob Storage data as an HDFS storage including support to organise files in directories and subdirectories.
+Systems like Hadoop in Azure HDInsight, Azure Databricks, and Azure Synapse Analytics can mount a distributed file system hosted in Azure Data Lake Store Gen2 and use it to process huge volumes of data.
+Azure Data Lake Storage Gen2: https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction
+
+6. Data Warehouse architectire diagram.
+Azure Cosmos DB is not part of the Azure data warehouse infrastructure.
+ - Raw data: Structured and unstructured.
+ - Ingenst Raw data: Azure Data Factory
+ - Store data: Azure Data Lake
+ - Prepare and transform data: Azure Databricks
+ - Model and serve data: Azure Synapse Analytics
+Azure Data Factory provides end-to-end support for ETL operations for data warehouse load.
+The consolidated data is stored in Azure Blob though Data Lake storage.
+Give access to Azure Databricks for data analysis.
+Use a native connector to move data from Databricks to Azure Synapse Analytics (acts as a single hub for structured data).
+Data factory: https://learn.microsoft.com/en-us/azure/data-factory/introduction
+
+7.Azure Data Factory can have multiple pipelines not necessarily running sequentially. 
+A pipeline is a logical grouping of activities that performs a tsk.
+Activities in a pipeline either run sequentially or operate in parallel.
+An activity represents a step in a pipeline.
+Explore data ingestion pipelines: https://learn.microsoft.com/en-us/training/modules/examine-components-of-modern-data-warehouse/3-data-ingestion-pipelines
+
+8.Determine tools for tasks with both relational and non-realtional data.
+Extract Data from external sources: Azure Data Factory
+Maintain relational and NoSQL data in a data store: Azure Data Lake Storage
+Analyse relational and NoSQL data: Azure Synapse Analytics (analyse high volume of sturctured and unstructured data).
+
+9.In Azure Data Factory a pipeline is a logical grouping of activities that define tasks to perform on data.
+A Dataset is a representation that maps the data structure inside a pipeline with an extrenal source of destination.
+Azure Data Factory uses datasets to perform tasks defines in a pipeline activities to move or transform data.
+A linked service is used to povide the connection between a data store and Azure Data Factory.
+A Linked service is associated with a dataset and is used to extract or load data in the pipeline.
+Linked services in Azure Data Factory and Azure Synapse Analytics: https://learn.microsoft.com/en-us/azure/data-factory/concepts-linked-services?tabs=data-factory
+Datasets in Azure Data Factory and Azure Synapse Analytics: https://learn.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services?tabs=data-factory
+Pipelines and activities in Azure Data Factory and Azure Synapse Analytics: https://learn.microsoft.com/en-us/azure/data-factory/concepts-pipelines-activities?tabs=data-factory
+
+10.Provision services that are compatible with Apache Spark for data processing tasks.
+Azure HDInsight is a bit data processing service that is used to provision and manage a cluster of open-source analytics solutions, such as Apache Spark, Hadoop, Kafka.
+Azure Databricks is a complete platform for big data processing, streaming, machine learning built on top of Apache Spark.
+Should not use Azure Data Factory that is used to ingenst both relational and non-relational data from multiple sources.
+Should not use Azure data Lake storage that is built on top of Azure Blob storage compatible with HDFS file system for anaytics solutions.
+
+11.
 
 
