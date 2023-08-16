@@ -1,0 +1,68 @@
+http://marketplace.measureup.com/login
+DP-900: Microsoft Azure Data Fundamentals Certification Practice Test
+7d81ea52-b06e-476d-83eb-098167183c1c-3761
+Order Number: 4061428
+Collection: https://learn.microsoft.com/en-us/users/pvkovicsrkaangla-0792/collections/7qeoue46ny4rpn
+Challenge: https://learn.microsoft.com/en-gb/users/cloudskillschallenge/collections/1o3xt3rw1mgp?WT.mc_id=cloudskillschallenge_be6235e5-c168-4993-b1bb-e53bade5ddee
+
+CORE DATA CONCEPTS
+https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-core-data-concepts/?source=docs&ns-enrollment-type=Collection&ns-enrollment-id=7qeoue46ny4rpn
+- Identify common data formats
+- Options for storing data in files
+- Options for storing data in databases
+- Characteristics of transactional data processing solutions
+- Characteristics of analytical data processing solution
+--------------------------------------------------------
+Entitites: Data structures in which this data is organized often represents entities (customers, products, sales orders).
+Can classify data as structured, semi-structured, or unstructured.
+Structured data adheres to a fixed schema: (all of the data has the same fields or properties)
+	- tabular: a schema for structured data entities
+	- often stored in a database in which multiple tables can reference one another by using key values in a relational model
+Semi-structured data allows for variation between entity instances.
+	- One common format for semi-structured data is JavaScript Object Notation (JSON)
+Unstructured data:
+	- documents, images, audio and video data, and binary files might not have a specific structure.
+	- The schema of unstructured data is typically defined at query time. This means that data can be loaded onto a data platform in its native format.
+
+SLA:
+99.9% Downtime hours per year (8,760 – 8,751.24) = 8.76
+99.99% Downtime hours per year (8,760 – 8,759.12) = 0.88
+99.999% Downtime hours per year (8,760 – 8,759.91) = 0.09
+Total cost of ownership (TCO)
+Migrate from physical or virtualized on-premises servers to Azure Virtual Machines: strategy is known as lift and shift.
+
+Understand job responsibilities:
+	- Data engineers also work with unstructured data and a wide variety of new data types, such as streaming data:
+	  ETL > Extract, Transform, Load:
+	  		Extract raw data from a structured or unstructured data pool and migrate it to a staging data repository.
+			Transform the data from the source schema to the destination schema.
+			Load the transformed data into the data warehouse.
+      ELT > An alternative approach is Extract, Load, Transform:
+	  		Data is immediately extracted and loaded into a large data repository, such as Azure Cosmos DB or Azure Data Lake Storage.
+			Reduces the resource contention on source systems. (disadvantage of the ETL approach is that the transformation stage can take a long time.)
+			Data engineers can begin transforming the data as soon as the load is complete.
+			The data processing framework a data engineer use to ingest data onto cloud data platforms in Azure.
+
+Cloud technical requirements:
+- Maintainability
+- HA
+- Multilingual support
+
+Data stores: (two broad categories)
+- File stores
+- Databases
+
+
+
+RELATIONAL DATA IN AZURE
+https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-relational-data/?source=docs&ns-enrollment-type=Collection&ns-enrollment-id=7qeoue46ny4rpn
+
+
+NON-RELATIONAL DATA IN AZURE
+https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-non-relational-data/?source=docs&ns-enrollment-type=Collection&ns-enrollment-id=7qeoue46ny4rpn
+
+
+DATA ANALYTICS IN AZURE
+https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-data-warehouse-analytics/?source=docs&ns-enrollment-type=Collection&ns-enrollment-id=7qeoue46ny4rpn
+
+
