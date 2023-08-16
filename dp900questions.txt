@@ -2,6 +2,47 @@ https://pts.measureup.com/web/index.php#dashboard.php
 ------------------------------------------------------------------------------------
 Describe core data concepts (31 questions)
 ------------------------------------------------------------------------------------
+1.
+
+17. Document databases and graph databases are examples of non-relational stores.
+Documents databases store data in JSON or XML format and do not require all documents to have the same structure. 
+Graph databases store information in the form of edges and nodes to present complex relationships such as social interactivity.
+The Azure Database for MariaDB and SQL databases are examples of relational databases.
+Relational databases store information in the form of tables, which can connect through relationships.
+Relational databases are used for highly structured data.
+
+18. In this scenario and application requires to store user profile data, like shipping addresses and user preferences.
+Each user can have multiple addresses and different preference fields.
+All user data should be stored and retrieved from a single data source.
+
+Should use a document database store consisting of entitites that have their related data stored in a single document.
+This document data supports flexible shchema and the entity data is usually stored in JSON format. 
+They can be used for maintaining the user profile information, making it possible to store all information in a single block.
+
+Should not use a column-family datatabase, grouping related columns into column-families that are used together.
+Instead of a Document-based database, can use column-family database to retrieve only the required columns-families instead of all user data.
+
+Should not use Key-value store, non-relational data store is highly optimised or simple data structures. 
+A Key-value store associates erach data value with a key that an be used to access data.
+
+20.Components of a Graph Database
+Graph databases store semi-structured data.
+Node: Instances of data entities, like people or companies. (analogous to rows in a table)
+Edge: Relationships between instances of data entities like company/employee.
+        Edges can be directed or undirected depending on the structure of the database.
+Property: Attributes of data entities, like a person's email address. (analogous to columns in a table)
+Directions: They are properties of an Edge.
+        Edgescan be directed or undericted.
+        Directed Edges store two pieces of information relating to each of the nodes they connect.
+        For instance, a parent/child directed edge would store which person node represents the parent and which the child.
+        Undirected edges link nodes toghether, where the direction of the relationship does not matter; for example, a friendhip between two people.
+
+
+In the context of databases, a sequence of database operations that satisfies the ACID properties (which can be perceived as a single logical operation on the data) is called a transaction.
+ACID: https://en.wikipedia.org/wiki/ACID
+Graph database: https://en.wikipedia.org/wiki/Graph_database
+Parquet: https://www.databricks.com/glossary/what-is-parquet
+
 https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-overview
 https://learn.microsoft.com/en-us/azure/architecture/data-guide/big-data/non-relational-data
 https://learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/2-data-formats
@@ -264,6 +305,65 @@ Azure Databricks is a complete platform for big data processing, streaming, mach
 Should not use Azure Data Factory that is used to ingenst both relational and non-relational data from multiple sources.
 Should not use Azure data Lake storage that is built on top of Azure Blob storage compatible with HDFS file system for anaytics solutions.
 
-11.
+11.Azure Data Factory can export and load data from Azure Blob Storage, Azure data Lake Storage, Azure Cosmos DB, Azure Synapse Analytics, or outside: Amazon S3.
+Azure Data Factory can run SQL Server Integration Service (SSIS) packages using the Execute SSIS Package activiyt. For using Execute SSIS Package activity  configure Azure-SSIS integration runtime (IR).
+Run an SSIS package with the Execute SSIS Package activity in Azure portal: https://learn.microsoft.com/en-us/azure/data-factory/how-to-invoke-ssis-package-ssis-activity?tabs=data-factory
+Azure Data Factory and Azure Synapse Analytics connector overview: https://learn.microsoft.com/en-us/azure/data-factory/connector-overview
+
+12.In this scenario an Azure Data Factory pipeline ingests employee data, geocodes each record and outputs the data into a data warehouse.
+The pipeline is orchestrating an ETL process, the process called data enrichment as the geocoding is being applied before the data reaches the target warehouse.
+This is not an ELT process because manipulation of data happens in the target system where the data loaded into the target system as it was in the source system.
+Geocoding the employee records is a pipeline activity.
+Extract, transform, and load (ETL): https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/etl
+
+13.In this scenario different workloads need appropriate analytical data store.
+Data warehouse: Relational data modeled in a star schema
+Data warehouse: Relational data modeled in a snowfloke schema 
+Data lake: A series of files containing both structured and unstructured data.
+Data Lakehouse: A series of unstructured files which can be queried using SQL.
+Data warehousees are relational data stores where the schema optimised for analytics. It is denormalised to allow for simpler and faster queries.
+Both star and snowflake schemas have a central fact table and orbiting dimension tables (with hierarchies in case of the snowflake).
+Data lakes are file stores for high-performance access for structured, semi-structred, unstructured data and their mix.
+Data Lakehouses are hybrid of a data warehouse and Data lake storing files with an abstracted relational storage layer which can be queried by SQL.
+Explore analytical data stores: https://learn.microsoft.com/en-us/training/modules/examine-components-of-modern-data-warehouse/4-analytical-data-stores
+
+14.Three components of Azure Synapse Analytics:
+ - Azure Data Lake Storage Gen2 (Store scripts, data, items in Azure Synapse Analytics)
+ - Pipelines (ingest and transform data within Azure Synapse Analytics)
+ - Workspaces (work withing Synapse Studio)
+Azure Synapse Analytics is a tool that allows massive and efficient data storage, built-in machine learning, AI to provide data insights.
+Exercise: Explore data analytics in Azure with Azure Synapse Analytics: https://learn.microsoft.com/en-us/training/modules/examine-components-of-modern-data-warehouse/5-exercise-azure-synapse
+
+15.In this scenario identify processing type for applications:
+Batch:
+- Employee payroll processing and generating payroll checks.
+- Setting inventory stocking lelevels based on seasonal sales volume.
+Stream:
+- Reporting the number of users and bandwidth use for an online game.
+- Identifying defected manufacturing errors to automatically reject failing parts.
+https://learn.microsoft.com/en-us/azure/architecture/data-guide/technology-choices/stream-processing
+https://learn.microsoft.com/en-us/azure/architecture/data-guide/technology-choices/batch-processing
+
+16.Both Batch and Stream processing can process data from multiple sources.
+Data used for transaction processing that requires immediate, consistent posting: Stram processing.
+Process a large quantity of data at once: Batch processing.
+
+17.Cannot use stream data to perform complex analytics.
+Stream processing with simple functions, aggregates, calculations with individual sets of data.
+Should use batch processing to perform complex anaytics.
+Big data architecture style: https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/big-data
+
+20.In this scenario collecting real-time data generated by the anti-cheating platform of an online game and selecting workload or processing to use:
+Should use Stream processing in this time-critical operation.
+Should not ue Batch processing for time-sensitive worklods.
+Should not use OLAP, organise databases and perform complex analysis.
+Should not use OLTP, accounting, financial, transactional systems require strong consistency for transactions.
+Online analytical processing (OLAP): https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/online-analytical-processing
+Online transaction processing (OLTP): https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/online-transaction-processing
+
+21.In this scenario select appropriate method of data processing:
+Batch: A finance department needs to reconcile bank transactions against orders once a month.
+Batch: 
+
 
 
