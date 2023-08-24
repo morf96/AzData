@@ -2,7 +2,84 @@ https://pts.measureup.com/web/index.php#dashboard.php
 ------------------------------------------------------------------------------------
 Describe core data concepts (31 questions)
 ------------------------------------------------------------------------------------
-1.
+1.Data organised in a relational database in Tables containing rows and columns.
+Relational databases using multiple tables containing rows with the same set of columns.
+
+2.Azure Cosmosd DB is the most common storage type for semi-structured adat using JSON format.
+Curly brackets are used to enclose the document and any sub documents.
+In a JSON document each data filed is identified by a label, followed by a colon and the filed value.
+{"StreetAddress":"Some City"}
+
+3.Characteristics of semi-structured data:
+- Do not need to define a strict schema.
+- Can store data that has highly variable structure.
+- Allows for variation between instances of data entities.
+- Allows for a hierachical schema.
+- Data entitites does not have to have the same set of attributes.
+- Can use XML or JSON format to store data.
+- Can add new attributes to enitites stored in JSON format by adding new keys.
+
+4.Identify data formats for two spreadhseets:
+A data enitity models a real-world object, such as a Vehicle in this case, shich has attributes.
+The car hire company's data models two entities: vehicle and rental. In case of the vehicle, its attributes are the license plate, make, model, color, year purchased.
+The License plate is the key value and unique for every vehicles, referenced in both spreadsheets allowing a single vehicle to have many rentals (one-to-many relationship)
+The licenseplate value acts as a foreign key for rentals.
+The same information is held for all records in the vehicle and rental spreadsheets and so the data is structure, the tables are related acting as a basic relational database.
+
+5.Attributes represent characteristics of a data entitiy.
+For tabular data, the table is the data entity and columns within the table are attributes.
+Purchase Date is an attribute of the Purchase entity, and i s a column on the Purchase data table.
+
+6.Records in separate tables are related to each other using keys, which are columns storing unique values per table row.
+Tables allow the storage of records in the same structure, containing the same attributes.
+Key-value databases are non-relational and can be used to store semi-structured data, allowign variations such as one record may contain a single address as an attribute while other contain three or none at all.
+Key-vaule databases allow two components of data to be stored related to an incividual record, a unique key and a value which can contain different types, formats, amounts of data per record.
+
+7.Semi-structured data allows for hierachical schema where data entities set-up in a hierarchical fasion and can be modelled in child/parent relationship.
+
+8.The component of a table used to store unique identifier for intsances of a data entity: Primary Key.
+Rows are instances of a data entitiy with a set of values for each column. 
+An index is created from several columns to improve the sepeed of queries, and they usually include the primary key.
+A Foreign Key is the name given to any column in a database table which references rows in another table by their own unique identifier, allowing to form relationships between tables.
+
+9.Documents in document database - relevant Azure service: Cosmos DB
+Each document is identified by a unique key used to identify the document and each document is written or retrieved as a single block.(?!)
+The schema is defined internally within the document and each individual document can have a different schema.
+This allows for support of denormalised data and variations between enitities.
+
+10.An application that will receive real-time event data from multiple sources which may vary in schema. The appliction should be able to write the data to a data store as quickly as possible.
+It should look up the value from the data store by using a unique key.
+A key/value data store functions esentially as a large hash table and is optimised for fast data writes.
+Each data row is referenced by a single key value.
+The pnly operations supported are simple query, insert, delete.
+Data updates require the application to rewrite the data for the entire value.
+Queries can be run on a key or range of keys.
+
+11.Graph data store made of entities and relationships that are referred as nodes and edges.
+There can be multiple relationships between entities including hierachical reltionships to support extensive, complex data.
+Makes it easier to perform complex data anaysis and mainly used for social media platforms.
+
+
+12.Non-relational data descriptions with the appropriate data store:
+Object: Large audio and video files that are used as the source for streaming content.
+Document: Semi-structured data with each entitiy providing its own field definitions.
+Graph: Entities and relationships, including multiple and complaex relationships with other enities.
+
+13.Wrongly recommended data store for text file, videos and images.
+A documents data store cannot be used as it stores semi-structured data in fields and values with a flexible structure.
+Documents are ususally represented in a JSON format and can have different fields to represent the same class of information.
+Should use object data store that is optimised for storing and retreiving large binary objects or blobs such as text files, images, videos.
+
+14.Implement a non-relational data store for a new application.
+The application needs to store data in JSON format with a flexibleschema. 
+All data enitity details should be stored together in the same structure.
+A document data store contains the entire data for an entity stored in single documents with a unique id.
+
+15.A column-family data store consists of row identifiers and a group of information stored in a column. 
+Each group of information is stored in independent columns.
+
+16.A graph data store consist of edges and nodes used to store and query complex relationships among entities. 
+It stores all the enities as nodes and builds the relationship between those enities by using edges.
 
 17. Document databases and graph databases are examples of non-relational stores.
 Documents databases store data in JSON or XML format and do not require all documents to have the same structure. 
@@ -11,19 +88,24 @@ The Azure Database for MariaDB and SQL databases are examples of relational data
 Relational databases store information in the form of tables, which can connect through relationships.
 Relational databases are used for highly structured data.
 
-18. In this scenario and application requires to store user profile data, like shipping addresses and user preferences.
+18. In this scenario and application stores user profile data, like shipping addresses and user preferences.
 Each user can have multiple addresses and different preference fields.
-All user data should be stored and retrieved from a single data source.
-
+All user data should be stored and retrieved from a single data source.<<<=
 Should use a document database store consisting of entitites that have their related data stored in a single document.
 This document data supports flexible shchema and the entity data is usually stored in JSON format. 
 They can be used for maintaining the user profile information, making it possible to store all information in a single block.
-
 Should not use a column-family datatabase, grouping related columns into column-families that are used together.
 Instead of a Document-based database, can use column-family database to retrieve only the required columns-families instead of all user data.
-
 Should not use Key-value store, non-relational data store is highly optimised or simple data structures. 
 A Key-value store associates erach data value with a key that an be used to access data.
+
+19.Parquet contains row groups, each which stores chunks of data. Stroing data in columns rather than in rows, developed by Apache.
+Free and open source file format.
+Language agnostic.
+Column-based format - files are organized by column, rather than by row, which saves storage space and speeds up analytics queries.
+Used for analytics (OLAP) use cases, typically in conjunction with traditional OLTP databases.
+Highly efficient data compression and decompression.
+Supports complex data types and advanced nested data structures.
 
 20.Components of a Graph Database
 Graph databases store semi-structured data.
@@ -37,11 +119,60 @@ Directions: They are properties of an Edge.
         For instance, a parent/child directed edge would store which person node represents the parent and which the child.
         Undirected edges link nodes toghether, where the direction of the relationship does not matter; for example, a friendhip between two people.
 
+21.Create a data model for a relational database.
+Identify the correct components:
+Row: Instances of data enitities like people or companies.
+Key: Relationships between instances of data entitieslike company/employee.
+Column: Attributes of data entities like a person's e-mail address.
+Table: represents the data entity itself.
+
+22.CSV:Structured, XML:Semi-structured, BLOB:Unstructured, JSON:Semi-structured
+
+23.A table references values in the "city" table where the ID column is highlighted.
+The values are not the Foreign key. Foreign key columns contain values referencing the Primary key of another table.
+The City ID column is a foreign key column as it references the primary key values, but this was not highlighted.
+
+24.Online transactional workloads (OLTP)
+data is highly normalised with the schema strongly enforced on write.
+The Read and write workload requirements are not balanced.
+Changes made are rolled back automatically if a transaction is not completed.
+
+25.OLAP & OLTP
+An application to perform data mining on holistic data collected from multiplerelational and non-relational sources is an example of an OLAP workload. 
+OLAP applications often manipulate data based on complax queries. Data mining queries are complex multidimansional queries that are designed to discover insights from the data that are not immediately present.
+An application to process hundreds of user purchases per minute including updates to inventory on hand, is an example of an OLTP workload.
+OLTP applications are optimised for write operations and entering and updating data accross multiple, related tables. 
+Practical changes made to data are rolled back automatically if a transaction is not completed so that no transaction is left in a partially completed state.
+An application to support warehouse sales and shipping for physical warehouses and multiple international locations is an exampl of an OLTP application.
+OLTP transactions can be distributed geographically and supported by one or more relational databases. This scenario requires a solution that supports consistent and reliable data writes.
+An application to provide loosely normalised data to support report generation is an example of OLAP workload.
+Maintaining live data for transactional processing and a separate copy of historic data for analysis, report generation prevents analytic processing from interfering with the performance during transactional processing.
+
+26.Analytical workloads:
+generate complex ad-hoc reports using several aggregations,
+perform big data analysis on a NoSQL database.
+Will not perform e-commerce transactions.
+
+27.Support a reporting sytem that performs data mining in a large amount of data.
+Online analytical processing(OLAP) can be used to organise large datasets and perform complex analytics, like data mining without negatively affecting transactional systems.
+
+28.Keep track of all types of financial transactions.
+Online transaction processing (OLTP) used with transactional workloads, day-to-day operations for accounting, finance and other systems requirong consistency of transactions.
+
+29.What a Database Administrator do? DBAs are responsible for maintaining and designing databases,
+keep the data-related systems up and running, update database structure, create back-ups, maintain good database performance.
+
+30.What a Data Analyst do?
+Create reports and dashboards, identify trends and relationships in data, and maintain models and datasets.
+
+31.What tool a Data Analyst use most of the time? Power BI
 
 In the context of databases, a sequence of database operations that satisfies the ACID properties (which can be perceived as a single logical operation on the data) is called a transaction.
 ACID: https://en.wikipedia.org/wiki/ACID
 Graph database: https://en.wikipedia.org/wiki/Graph_database
 Parquet: https://www.databricks.com/glossary/what-is-parquet
+
+Simple DML commands: CREATE/UPDATE/INSERT/DELETE/MERGE
 
 https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-overview
 https://learn.microsoft.com/en-us/azure/architecture/data-guide/big-data/non-relational-data
@@ -68,9 +199,70 @@ Data Scientist
 Data Engineer
 https://learn.microsoft.com/en-us/training/modules/explore-roles-responsibilities-world-of-data/2-explore-job-roles
 
+
 ------------------------------------------------------------------------------------
 Identify considerations for relational data on Azure (30 questions)
 ------------------------------------------------------------------------------------
+1.
+
+2.
+
+3.
+
+4.
+
+5.
+
+6.
+
+7.
+
+8.
+
+9.
+
+10.
+
+11.
+
+12.
+
+13.
+
+14.
+
+15.
+
+16.
+
+17.
+
+18.
+
+19.
+
+20.
+
+21.
+
+22.
+
+23.
+
+24.
+
+25.
+
+26.
+
+27.
+
+28.
+
+29.
+
+30.
+
 https://binaryterms.com/relational-data-model.html
 https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/relational-vs-nosql-data
 https://learn.microsoft.com/en-us/training/modules/describe-concepts-of-relational-data/2-explore-characteristics
@@ -105,6 +297,10 @@ Azure File storage is not recommended storage solution for key/value storage imp
 Azure Cosmos DB Core (SQL) API suitable for key/value storage also supported by Azure Table storage and Cosmos Table API.
 The large file share and premium file shares support LRS and ZRS only in Azure File Storage.
 
+3.
+
+4.
+
 5. Which two elements compose a key in Azure Table Storage?
 - Partition Key
 - Row Key
@@ -128,9 +324,13 @@ Tables store data as collections of entities:
 Entities are similar to rows. An entity has a primary key and a set of properties. 
 A property is a name, typed-value pair, similar to a column.
 
+7.
+
 8. Enable hierarchical namespace: To implment folder and directory level storage security.
 Enabling hierarchical namespace allows to organise Blob containers in folders and directories allowing to define POSIX-complience permissions and RBAC inside containers.
 Access control lists (ACLs) in Azure Data Lake Storage Gen2: https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control
+
+9.
 
 10. By defualt in a Blob storage, Containers act like folders, and logically group related blob files together.
 
@@ -176,10 +376,14 @@ Common Azure Cosmos DB use cases: https://learn.microsoft.com/en-us/azure/cosmos
 Azure Cosmos DB is a PaaS applciation need some Database Administration. It is a NoSQL database support semi-structured data that used by online games.
 Azure Cosmos DB supports multiple APIs such as Cassandra, Gremlin, Table, ...
 
+16.
+
 17. Azure Cosmos DB allows simpler queries to retrieve data than a relational database.
 Denormalisation reduces the number of tables within a data model because all attributes from an entity are stored together rather than in different tables.
 With fewer tables data read or retreival queries become less complex due to the reduced tabe joins needed.
 Cosmos DB supports denormalisation of data which increases the need for data dullication but also reduces the complexity of the schema.
+
+18.
 
 19. Identify query syntax per Cosmosd DB API type.
 Is this MondoDB API, Table API, Cassandra API, Core API, Gremlin API?
@@ -226,10 +430,6 @@ Key-vaule stores are highly optimised for single lookup scenarios, although Core
 Using Core API for new applications use a document with and item ID and a single value field to represent a key-value store.
 
 Azure Cosmos DB Cassandra API is suitable to represent weather or time-series activity, in a column family databse.
-
-
-
-
 
 ------------------------------------------------------------------------------------
 Describe an analytics workload on Azure (37 questions)
@@ -352,6 +552,10 @@ Process a large quantity of data at once: Batch processing.
 Stream processing with simple functions, aggregates, calculations with individual sets of data.
 Should use batch processing to perform complex anaytics.
 Big data architecture style: https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/big-data
+
+18.
+
+19.
 
 20.In this scenario collecting real-time data generated by the anti-cheating platform of an online game and selecting workload or processing to use:
 Should use Stream processing in this time-critical operation.
