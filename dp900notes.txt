@@ -176,11 +176,61 @@ Azure Cosmos DB
 - global-scale non-relational (NoSQL) database system that supports multiple application programming interfaces (APIs), 
 - store and manage data as JSON documents, key-value pairs, column-families, and graphs.
 - aggregate data stored in JSON files for use in analytical reports without additional development effort, the SQL API allows querying the documents by using SQL-like language.
-- The Gremlin API is used for graph databases, best option for hierarchical data (charts).  
-- The MongoDB API stores data in the BSON format. 
-- The Table API is used to retrieve key/value pairs. 
-- The Cassandra API is used to retrieve tabular data in a column-family storage. 
+- IoT and telematics: store and access data such as Azure Machine Learning, Azure HDInsight, and Power BI
+- Microsoft uses Cosmos DB for its own e-commerce platforms that run as part of Windows Store and Xbox Live.
+- The Cosmos DB SDKs can be used to build rich iOS and Android applications
+- The Gremlin API is used for graph databases, best option for hierarchical data (charts):
+	entities are defined as vertices that form nodes in connected graph
+	two kinds of vertex (employee and department)
+	Gremlin syntax includes functions to operate on vertices and edges, enabling you to insert, update, delete, and query data in the graph:
+		g.addV('employee').property('id', '3').property('firstName', 'Alice')
+		g.V('3').addE('reports to').to(g.V('1'))
+	
+- The MongoDB API stores data in the BSON (Binary JSON) format, can be queried by MongoDB Query Language (MQL):
+		db.products.find({id: 123})
+	results of this query consist of JSON documents:
+		{
+  		"id": 123,
+   		"name": "Hammer",
+   		"price": 2.99
+		}
+
+- The Table API is used to retrieve key/value pairs (similar to Azure Table Storage)
+			PartitionKey	RowKey	Name		Email
+			1				123		Joe Jones	joe@litware.com
+			1				124		Samir Nadoy	samir@northwind.com
+
+		Use the Table API through one of the language-specific SDKs to make calls to service endpoints to retrieve data from tables example:
+		https://endpoint/Customers(PartitionKey='1',RowKey='124')
+
+- The Cassandra API is used to retrieve tabular data in a column-family storage, (syntax based on SQL):
+	SELECT * FROM Employees WHERE ID = 2
+
 - The SQL API that is optimized to store and process (transform) JSON files.
+	A SQL query for an Azure Cosmos DB database containing customer data might look similar to this:
+		SELECT *
+		FROM customers c
+		WHERE c.id = "joe@litware.com"
+	The result of this query consists of one or more JSON documents, as shown here:
+		{
+   		"id": "joe@litware.com",
+   		"name": "Joe Jones",
+   		"address": {
+        		"street": "1 Main St.",
+        		"city": "Seattle"
+    		}
+		}
+- The PostgreSQL API is used to 
+	PostgreSQL is a relational database management system (RDBMS), define relational tables of data, for example a table of products like this:
+		ProductID	ProductName	Price
+		123			Hammer		2.99
+		162			Screwdriver	3.49
+	Query this table to retrieve the name and price of a specific product using SQL like this:
+		SELECT ProductName, Price 
+		FROM Products
+		WHERE ProductID = 123;
+
+
 
 Azure Storage
 - Blob containers - scalable, cost-effective storage for binary files.
@@ -403,21 +453,17 @@ Blobs - read and write them by using the Azure blob storage API.
 		- Systems like Hadoop in Azure HDInsight, Azure Databricks, and Azure Synapse Analytics can mount a distributed file system hosted in Azure Data Lake Store Gen2 and use it to process huge volumes of data.
 		- To create an Azure Data Lake Store Gen2 files system, you must enable the Hierarchical Namespace option of an Azure Storage account (can’t revert it to a flat namespace)
 
-
-
-
-
-
-
-
-
 -----------------------
 DATA ANALYTICS IN AZURE
 -----------------------
 https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-data-warehouse-analytics/?source=docs&ns-enrollment-type=Collection&ns-enrollment-id=7qeoue46ny4rpn
-- 
+- Identify common elements of a modern data warehousing solution
+- Describe key features for data ingestion pipelines
+- Identify common types of analytical data store and related Azure services
+- Provision Azure Synapse Analytics and use it to ingest, process, and query data
+---------------------------------------------------------------------------------
+data warehousing architecture
 
-----------
 
 
 
