@@ -384,17 +384,30 @@ https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore
 Blobs - read and write them by using the Azure blob storage API.
 	container provides a way of grouping related blobs together
         within a container, organize blobs in a hierarchy of virtual folders 
-        	- using a "/" character in a blob name to organize the blobs into namespaces)
+        	- using a "/" character in a blob name to organize the blobs into namespaces
         	- can't perform folder-level operations to control access or perform bulk operations
-        
+	Azure Files is used to store and share files by using SMB and NFS (enables share up to 100 TB of data in a single storage account)
+	Table storage is used to store key/value pairs in partitions. 
+			The partition key that identifies the partition containing the row, and a row key that is unique to each row in the same partition.
+			Azure Table Storage splits a table into partitions. 
+			Partitioning is a mechanism for grouping related rows, based on a common property or partition key. 
+			Rows that share the same partition key will be stored together. 
+			Partitioning not only helps to organize data, it can also improve scalability and performance in the following ways:
+				Partitions are independent from each other, and can grow or shrink as rows are added to, or removed from, a partition. 
+				A table can contain any number of partitions.
+				When you search for data, you can include the partition key in the search criteria. 
+				This helps to narrow down the volume of data to be examined, and improves performance by reducing the amount of I/O 
+				(input and output operations, or reads and writes) needed to locate the data.
+	Page blobs are used for VHDs.
+	Data Lake Storage Gen2 is used to store structured and unstructured data for processing:
+		- Systems like Hadoop in Azure HDInsight, Azure Databricks, and Azure Synapse Analytics can mount a distributed file system hosted in Azure Data Lake Store Gen2 and use it to process huge volumes of data.
+		- To create an Azure Data Lake Store Gen2 files system, you must enable the Hierarchical Namespace option of an Azure Storage account (can’t revert it to a flat namespace)
 
 
 
-Data Lake Storage Gen2 is used for storing huge amounts of data to be processed by services such as Databricks, Azure Synapse Analytics, and HDInsight. 
-Table storage is used to store key/value pairs in partitions. 
-Azure Files is used to store and share files by using SMB and NFS. 
-Data Lake Storage Gen2 is used to store structured and unstructured data for processing. 
-Page blobs are used for VHDs.
+
+
+
 
 
 
