@@ -559,5 +559,45 @@ Analytical data stores (two common types, data warehouses, data lakes):
 			Migrate an existing on-premises Hadoop-based solution to the cloud.
 			Not as user-friendly as Azure Synapse Analytics and Azure Databricks.
 
-Real-time analytics:
-	
+Batch processing, in which multiple data records are collected and stored before being processed together in a single operation.
+Stream processing, in which a source of data is constantly monitored and processed in real time as new data events occur.
+	Data scope: 
+		Batch processing can process all the data in the dataset. 
+		Stream processing typically only has access to the most recent data received, or within a rolling time window (the last 30 seconds, for example).
+	Data size: 
+		Batch processing is suitable for handling large datasets efficiently. 
+		Stream processing is intended for individual records or micro batches consisting of few records.
+	Performance: 
+		Latency is the time taken for the data to be received and processed. The latency for batch processing is typically a few hours. 
+		Stream processing typically occurs immediately, with latency in the order of seconds or milliseconds.
+	Analysis: 
+		Typically use batch processing to perform complex analytics. 
+		Stream processing is used for simple response functions, aggregates, or calculations such as rolling averages.
+
+Combine batch and stream processing to enabling both historical and real-time data analysis (lambda and delta architectures)
+	1. Data events from a streaming data source are captured in real-time.
+	2. Data from other sources is ingested into a data store (often a data lake) for batch processing.
+	3. If real-time analytics is not required, the captured streaming data is written to the data store for subsequent batch processing.
+	4. When real-time analytics is required, a stream processing technology is used to prepare the streaming data for real-time analysis or visualization; 
+	   often by filtering or aggregating the data over temporal windows.
+	5. The non-streaming data is periodically batch processed to prepare it for analysis, and the results are persisted in an analytical data store (often referred to as a data warehouse) for historical analysis.
+	6. The results of stream processing may also be persisted in the analytical data store to support historical analysis.
+	7. Analytical and visualization tools are used to present and explore the real-time and historical data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
