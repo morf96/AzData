@@ -462,13 +462,102 @@ https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore
 - Identify common types of analytical data store and related Azure services
 - Provision Azure Synapse Analytics and use it to ingest, process, and query data
 ---------------------------------------------------------------------------------
-data warehousing architecture
+Data warehousing architecture:
+	1. Data ingestion and processing 
+		– data from one or more transactional data stores, files, real-time streams, or other sources is loaded into a data lake or a relational data warehouse. 
+		  The load operation usually involves an extract, transform, and load (ETL) or extract, load, and transform (ELT) process 
+		  in which the data is cleaned, filtered, and restructured for analysis. 
+		  In ETL processes, the data is transformed before being loaded into an analytical store, while in an ELT process the data is copied to the store and then transformed. 
+		  Either way, the resulting data structure is optimized for analytical queries. 
+		  The data processing is often performed by distributed systems that can process high volumes of data in parallel using multi-node clusters. 
+		  Data ingestion includes both batch processing of static data and real-time processing of streaming data.
+	2. Analytical data store 
+		– data stores for large scale analytics include relational data warehouses, 
+		  file-system based data lakes, 
+		  and hybrid architectures that combine features of data warehouses and data lakes (sometimes called data lakehouses or lake databases).
+	3. Analytical data model 
+		– while data analysts and data scientists can work with the data directly in the analytical data store, 
+		  it’s common to create one or more data models that pre-aggregate the data to make it easier to produce reports, dashboards, and interactive visualizations. 
+		  Often these data models are described as cubes, 
+		  in which numeric data values are aggregated across one or more dimensions (for example, to determine total sales by product and region). 
+		  The model encapsulates the relationships between data values and dimensional entities to support "drill-up/drill-down" analysis.
+	4. Data visualization 
+		– data analysts consume data from analytical models, and directly from analytical stores to create reports, dashboards, and other visualizations. 
+		  To show trends, comparisons, and key performance indicators (KPIs) for printed reports, graphs and charts in documents or PowerPoint presentations, web-based dashboards, and interactive environments in which users can explore data visually.
+		  		Scatter plots are used to determine a relationship or correlation between two numeric values. 
+		  		Pie charts visually compare different values as a proportion of a total. 
+		  		Line charts are used to examine trends, usually over time. 
+		  		Bar charts are used to compare different values for discrete categories.
+Data ingestion pipelines:
+	Consist of one or more activities that operate on data
+	1. Pipelines use linked services to load and process data (might use an Azure Blob Store linked service to ingest the input dataset)
+	2. Create pipelines that orchestrate ETL processes
+	4. Use services such as Azure SQL Database to run a stored procedure that looks up related data values, before running a data processing task.
+	5. Run a data processing task on Azure Databricks or Azure HDInsight, or apply custom logic using an Azure Function.
+	   Pipelines can also include some built-in activities, which don’t require a linked service.
+	6. Save the output dataset in a linked service such as Azure Synapse Analytics.
+Analytical data stores (two common types, data warehouses, data lakes):
+	- Data lakes
+	- Data warehouses
+	- Hybrid approaches
+   Azure services for analytical stores(here are three main services):
+		* Azure Synapse Analytics
+		* Azure Databricks 
+		* Azure HDInsight
 
+	Data Lake is a file store, usually on a distributed file system for high performance data access.
+		Schema-on-read approach: (without applying constraints when it's stored)
+			Spark or Hadoop are often used to process queries on the stored files and return data for reporting and analytics.
+			Supporting a mix of structured, semi-structured, unstructured data analisation without the need for schema enforcement.
+	Data Warehouse (relational database):
+		Data is stored in a schema that is optimized for data analytics rather than transactional workloads.
+		Fact Tables:
+			Data from a transactional store is transformed into a schema in which numeric values are stored in central fact tables.
+		Dimension Tables:
+			Fact tables related to one or more dimension tables that represent entities by which the data can be aggregated.
+		Star Schema:
+			This kind of fact and dimension table schema is called a star schema.
+			Often extended into a snowflake schema by adding additional tables related to the dimension tables to represent dimensional hierarchies, for example, product might be related to product categories. 
+			A data warehouse is a great choice when you have transactional data that can be organized into a structured schema of tables, and you want to use SQL to query them.
+	Hybrid Approach(Lake Database, Data Lakehouse):
+		Combine features of data lakes and data warehouses in a lake database or data lakehouse.
+		Data lake has aw data is stored as files with a relational storage layer abstracts the underlying files and expose them as tables, which can be queried using SQL.
+		PolyBase:
+			SQL pools in Azure Synapse Analytics include PolyBase, which enables you to define external tables based on files in a datalake (and other sources) and query them using SQL. 
+		Lake Database approach:
+			Separating the storage and compute for a data warehousing solution.
+				Use database templates to define the relational schema of the data warehouse.
+				While storing the underlying data in data lake storage.
+		Data Lakehouse:
+			Relatively new approach in Spark-based systems, and are enabled through technologies like Delta Lake 
+			Adds relational storage capabilities to Spark, so define tables that enforce schemas and transactional consistency.
+			Support batch-loaded and streaming data sources.
+			Provide a SQL API for querying.
 
+	Azure services for analytical stores:
+	Each of these services can be thought of as an analytical data store.
+	They rovide a schema and interface through which the data can be queried.
+	In many cases the data is actually stored in a data lake and the service is used to process the data and run queries.
+		* Azure Synapse Analytics:
+			Native support for log and telemetry analytics with Azure Synapse Data Explorer pools.
+			Built in data pipelines for data ingestion and transformation.
+			Azure Synapse Studio: interactive user interface www.azuresynapse.net/en-us/home
+			https://microsoftlearning.github.io/DP-900T00A-Azure-Data-Fundamentals/Instructions/Labs/dp900-04-synapse-lab.html
+			Create interactive notebooks in which Spark code and markdown content can be combined.
+			Combine data integrity, reliability of a scalable, high-performance SQL Server based relational data warehouse with the flexibility of a data lake and open-source Apache Spark.
+			A Synapse Analytics workspace requires two resource groups in your Azure subscription; one for resources you explicitly create, and another for managed resources used by the service. 
+			It also requires an Azure Data Lake Storage Account in which to store data, scripts, and other artifacts.
+			SQL is a common language for querying structured datasets, many data analysts find languages like Python useful.
+			  Needs to run Python (and other) code in a Spark pool; which uses a distributed data processing engine based on Apache Spark.
+		* Azure Databricks:
+			Built on Apache Spark, offers native SQL capabilities as well as workload-optimized Spark clusters for data analytics and data science.
+			Azure implementation of the Databricks platform.
+			Operate in a multi-cloud environment, due to its common use on multiple cloud platforms
+		* Azure HDInsight:
+			Supports multiple open-source data analytics cluster types.
+			Option if your analytics solution relies on multiple open-source frameworks.
+			Migrate an existing on-premises Hadoop-based solution to the cloud.
+			Not as user-friendly as Azure Synapse Analytics and Azure Databricks.
 
-
-Scatter plots are used to determine a relationship or correlation between two numeric values. 
-Pie charts visually compare different values as a proportion of a total. 
-Line charts are used to examine trends, usually over time. 
-Bar charts are used to compare different values for discrete categories.
-
+Real-time analytics:
+	
