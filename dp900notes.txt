@@ -1,9 +1,11 @@
 http://marketplace.measureup.com/login
-DP-900: Microsoft Azure Data Fundamentals Certification Practice Test
-7d81ea52-b06e-476d-83eb-098167183c1c-3761
-Order Number: 4061428
+DP-900: Microsoft Azure Data Fundamentals Certification Practice Test: 7d81ea52-b06e-476d-83eb-098167183c1c-3761 Order Number: 4061428
+
 Collection: https://learn.microsoft.com/en-us/users/pvkovicsrkaangla-0792/collections/7qeoue46ny4rpn
 Challenge: https://learn.microsoft.com/en-gb/users/cloudskillschallenge/collections/1o3xt3rw1mgp?WT.mc_id=cloudskillschallenge_be6235e5-c168-4993-b1bb-e53bade5ddee
+Practice Test: https://learn.microsoft.com/en-gb/certifications/exams/dp-900/practice/assessment?assessmentId=24&assessment-type=practice
+Exam page: https://learn.microsoft.com/en-gb/certifications/exams/dp-900/
+Labs: https://microsoftlearning.github.io/DP-900T00A-Azure-Data-Fundamentals/
 
 ------------------
 CORE DATA CONCEPTS
@@ -54,6 +56,7 @@ Cloud technical requirements:
 Data stores: (two broad categories)<<=
 - File stores
 - Databases
+
 FILE STORES:
 -----------
 Delimited text is a good choice for structured data that needs to be accessed by a wide range of applications and services in a human-readable format.
@@ -114,6 +117,7 @@ Non-relational databases, 4 types:
 OLTP:
 A transactional system records transactions that encapsulate specific events that the organization wants to track.
 Transactional systems are often high-volume, sometimes handling many millions of transactions in a single day.
+Transactional databases are highly normalized and are optimized for CRUD operations.
 OLTP solutions rely on a database system in which data storage is optimized for both read and write operations in order to support transactional workloads 
 in which data records are created, retrieved, updated, and deleted (often referred to as CRUD operations).
 OLTP systems are typically used to support live applications that process business data - often referred to as line of business (LOB) applications.
@@ -138,17 +142,45 @@ The data in the Data lake, Data warehouse, and Analytical model can be queried t
 
 Data Services:
 -------------
-Azure SQL
-- Azure SQL Database – a fully managed platform-as-a-service (PaaS) database hosted in Azure
-- Azure SQL Managed Instance – a hosted instance of SQL Server with automated maintenance, allows more flexible configuration than Azure SQL DB.
-- Azure SQL VM – a virtual machine with an installation of SQL Server, allowing maximum configurability with full management responsibility.
+Azure SQL (DBMS)
+- Azure SQL Database – a fully managed platform-as-a-service (PaaS) database hosted in Azure, best option for create, read, update, and delete (CRUD) operations.
+    core database-level capabilities of on-premises SQL Server, this option for new cloud solutions, or to migrate applications that have minimal instance-level dependencies.
+    A SQL Database server is a logical construct that acts as a central administrative point for multiple single or pooled databases, logins, firewall rules, auditing rules, threat detection policies, and failover groups.
+    available as a Single Database or an Elastic Pool
+    can use the Data Migration Assistant to detect compatibility issues with your databases that can impact database functionality in Azure SQL Database. 
 
-Azure Database for open-source relational databases
+- Azure SQL Managed Instance – a hosted instance of SQL Server with automated maintenance, more flexible configuration than Azure SQL DB, databases are maintained in the same SQL Managed Instance cluster
+    on-premises databases can be migrated with minimal code changes by using the Azure Database Migration service: https://learn.microsoft.com/en-us/azure/dms
+    can install multiple databases on the same instance
+    Managed instances depend on other Azure services such as Azure Storage for backups, Azure Event Hubs for telemetry, Azure Active Directory for authentication, Azure Key Vault for Transparent Data Encryption (TDE) 
+    and a couple of Azure platform services that provide security and supportability features. The managed instances make connections to these services.
+    Data Migration Assistant (DMA): https://www.microsoft.com/download/details.aspx?id=53595
+    support features: linked servers, Service Broker (a message processing system that can be used to distribute work across servers), Database Mail
+    near 100% compatibility with SQL Server Enterprise Edition, running on-premises.
+    
+- Azure SQL VM – maximum configurability with full management responsibility, only option that supports all the SQL Server features in the cloud
+    databases can easily be "lift and shift" migrated without change.
+
+- Azure SQL Edge - A SQL engine that is optimized for Internet-of-things (IoT) scenarios that need to work with streaming time-series data
+
+
+Azure Database for open-source relational databases:
 - Azure Database for MySQL - a simple-to-use open-source database management system that is commonly used in Linux, Apache, MySQL, and PHP (LAMP) stack apps.
-- Azure Database for MariaDB - offers compatibility with Oracle Database.
-- Azure Database for PostgreSQL - a hybrid relational-object database, store data in relational tables or store custom data types, with their own non-relational properties.
+- Azure Database for MariaDB - offers compatibility with Oracle Database, built-in support for temporal data enabling applications to query data as the data appeared in previous points in time.
+- Azure Database for PostgreSQL - a hybrid relational-object database, store data in relational tables or store custom data types, with their own non-relational properties,
+                                  another key feature is the ability to store and manipulate geometric data, such as lines, circles, and polygons
+  Exercise: Explore Azure relational database services
+  https://learn.microsoft.com/en-gb/training/modules/explore-provision-deploy-relational-database-offerings-azure/4-exercise-provision-relational-azure-data-services?pivots=azuresql
 
-Azure Cosmos DB - global-scale non-relational (NoSQL) database system that supports multiple application programming interfaces (APIs), store and manage data as JSON documents, key-value pairs, column-families, and graphs.
+Azure Cosmos DB 
+- global-scale non-relational (NoSQL) database system that supports multiple application programming interfaces (APIs), 
+- store and manage data as JSON documents, key-value pairs, column-families, and graphs.
+- aggregate data stored in JSON files for use in analytical reports without additional development effort, the SQL API allows querying the documents by using SQL-like language.
+- The Gremlin API is used for graph databases, best option for hierarchical data (charts).  
+- The MongoDB API stores data in the BSON format. 
+- The Table API is used to retrieve key/value pairs. 
+- The Cassandra API is used to retrieve tabular data in a column-family storage. 
+- The SQL API that is optimized to store and process (transform) JSON files.
 
 Azure Storage
 - Blob containers - scalable, cost-effective storage for binary files.
@@ -156,16 +188,25 @@ Azure Storage
 - File shares - network file shares such as you typically find in corporate networks.
 - Tables - key-value storage for applications that need to read and write data values quickly.
 
-Azure Data Factory - exampleÉ build extract, transform, and load (ETL) solutions that populate analytical data stores with data from transactional systems
+Azure Data Factory 
+- Example for build extract, transform, load (ETL) solutions that populate analytical data stores with data from transactional systems
+- Create a pipeline to process data in response to an event
 
 Azure Synapse Analytics - provides a single service interface for multiple analytical capabilities, including:
 - Pipelines - based on the same technology as Azure Data Factory.
 - SQL - a highly scalable SQL database engine, optimized for data warehouse workloads.
 - Apache Spark - an open-source distributed data processing system that supports multiple programming languages and APIs, including Java, Scala, Python, and SQL.
 - Azure Synapse Data Explorer - a high-performance data analytics solution that is optimized for real-time querying of log and telemetry data using Kusto Query Language (KQL).
-Integration with services such as Azure Machine Learning and Microsoft Power BI
+- Integration with services such as Azure Machine Learning and Microsoft Power BI.
+- Create a pipeline to process data in response to an event.
+- (Databricks and the) Spark pool in Azure Synapse Analytics run data processing for large amounts of data by using Scala.
+  Analytics Spark pools do not directly support graph or relational databases, column-family databases are used to store unstructured, tabular data comprising rows and columns.
+- Perform near real-time analytics on the operational data (and realted transactions) stored in Azure Cosmos DB.
+- Blob storage and Data Lake Storage can be used to store massive amounts of data and can be mounted in Azure Synapse Analytics.
 
-Azure Databricks - Azure-integrated version of the popular Databricks platform.
+Azure Databricks
+- Azure-integrated version of the popular Databricks platform.
+- Databricks (and the Apache Spark pool in Azure Synapse Analytics) run data processing for large amounts of data by using Scala.
 
 Azure HDInsight - Azure-hosted cluster support open-source big data analytics workloads:
 - Apache Spark - a distributed data processing system that supports multiple programming languages and APIs, including Java, Scala, Python, and SQL.
@@ -173,16 +214,22 @@ Azure HDInsight - Azure-hosted cluster support open-source big data analytics wo
 - Apache HBase - an open-source system for large-scale NoSQL data storage and querying.
 - Apache Kafka - a message broker for data stream processing.
 
-Azure Stream Analytics 
-Applies a query to extract and manipulate data from the input stream, writes the results to an output for analysis or further processing.
-Capture streaming data for ingestion into an analytical data store or for real-time visualization.
+Azure Stream Analytics - used to define streaming jobs
+- Applies a query to extract and manipulate data from the input stream, writes the results to an output for analysis or further processing.
+- Capture streaming data for ingestion into an analytical data store or for real-time visualization.
 
-Azure Data Explorer - standalone service, high-performance querying of log and telemetry data
+Azure Data Explorer 
+- standalone service, high-performance querying of log and telemetry data
+- perform on-demand analysis of large volumes of data from text logs, websites and IoT devices by using a common querying language for all the data sources
 
-Microsoft Purview - enterprise-wide data governance and discoverability
-Create a map for data to track data lineage across multiple data sources and systems.
+Microsoft Purview 
+- enterprise-wide data governance and discoverability
+- Create a map for data to track data lineage across multiple data sources and systems.
 
-Microsoft Power BI - platform for analytical data modeling and reporting
+Microsoft Power BI 
+- platform for analytical data modeling and reporting
+
+Azure Time Series Insights: https://insights.timeseries.azure.com/
 
 ------------------------
 RELATIONAL DATA IN AZURE
@@ -196,6 +243,7 @@ https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore
 Relational tables are a format for structured data.
 Each row in a table has the same amount of columns.
 Example: a table might include a MiddleName column which can be empty (or NULL).
+A relational database is the best option for CRUD operations and uses the least amount of storage space.
 Datatypes:
 Each column stores data of a specific datatype:
 	an Email column in a Customer table would likely be defined to store character-based (text) data (which might be fixed or variable in length), 
@@ -214,31 +262,139 @@ Process of refactoring data (simple definition):
  - Composite Keys for Tables: a unique combination of multiple columns with primary or foreign keys.
    For example, the LineItem table in the example above uses a unique combination of OrderNo and ItemNo to identify a line item from an individual order.
 
-SQL statements:
-Some common relational database management systems that use SQL include Microsoft SQL Server, MySQL, PostgreSQL, MariaDB, and Oracle.
+
+Common relational database management systems that use SQL include Microsoft SQL Server, MySQL, PostgreSQL, MariaDB, and Oracle.
 SQL was originally standardized by the American National Standards Institute (ANSI) in 1986, and by the International Organization for Standardization (ISO) in 1987.
 Database vendors include their own proprietary extensions that are not part of the standard, which has resulted in a variety of dialects of SQL:
  - Azure database services that are based on the SQL Server database engine, use Transact-SQL.
  - pgSQL. This is the dialect, with extensions implemented in PostgreSQL.
  - PL/SQL. This is the dialect used by Oracle. PL/SQL stands for Procedural Language/SQL.
 
+SQL statements are grouped into three main logical groups:
+- Data Definition Language (DDL) - create, modify, and remove tables and other objects in a database (table, stored procedures, views)
+	CREATE	Create a new object in the database, such as a table or a view.
+	ALTER	Modify the structure of an object. For instance, altering a table to add a new column.
+	DROP	Remove an object from the database.
+	RENAME	Rename an existing object.
 
+	Columns marked as NOT NULL are referred to as mandatory columns.
+	INT (an integer, or whole number)
+	DECIMAL (a decimal number)
+	VARCHAR stands for variable length character data
+	NULL value an empty column in a row 
 
+	CREATE TABLE Product
+	(
+	   ID INT PRIMARY KEY,
+ 	   Name VARCHAR(20) NOT NULL,
+ 	   Price DECIMAL NULL
+	);
 
+- Data Control Language (DCL) - manage access to objects in a database by granting, denying, or revoking permissions to specific users or groups
+	GRANT	Grant permission to perform specific actions
+	DENY	Deny permission to perform specific actions
+	REVOKE	Remove a previously granted permission
+	
+	GRANT SELECT, INSERT, UPDATE
+	ON Product
+	TO user1;
+	
+- Data Manipulation Language (DML) - retrieve (query) data, insert new rows, or modify existing rows
+	SELECT	Read rows from a table, which columns
+	INSERT	Insert new rows into a table
+	UPDATE	Modify data in existing rows
+	DELETE	Delete existing rows
+	WHERE clause with these statements above to specify criteria
+	      only rows that match these criteria will be selected, updated, or deleted.
+	JOIN clause for SELECT statements that retrieve data from multiple tables based on a shared key.
+	Aliases: abbreviate the table names
 
+	SELECT FirstName, LastName, Address, City
+	FROM Customer
+	WHERE City = 'Seattle'
+	ORDER BY LastName;
 
+	SELECT o.OrderNo, o.OrderDate, c.Address, c.City
+	FROM Order AS o
+	JOIN Customer AS c
+	ON o.Customer = c.ID
 
+	UPDATE Customer
+	SET Address = '123 High St.'
+	WHERE ID = 1; (If you omit the WHERE clause, an UPDATE statement will modify every row in the table.)
 
+	DELETE FROM Product
+	WHERE ID = 162;	
 
+	INSERT INTO Product(ID, Name, Price)
+	VALUES (99, 'Drill', 4.99);
+
+	HAVING is used to filter content from a GROUP BY command. 
+	UNION displays the content of two sets of columns from two tables but is not based on a shared key. 
+	INTERSECT shows only values that exist in both tables.
+
+Database objects:
+ - Table
+ - View: virtual table based on the results of a SELECT query
+	
+	Create a view on the Order and Customer tables that retrieves order and customer data to determine delivery addresses easy:
+
+	CREATE VIEW Deliveries
+	AS
+	SELECT o.OrderNo, o.OrderDate,
+      	       c.FirstName, c.LastName, c.Address, c.City
+	FROM Order AS o JOIN Customer AS c
+	ON o.Customer = c.ID;
+	
+	SELECT OrderNo, OrderDate, LastName, Address
+	FROM Deliveries
+	WHERE City = 'Seattle';
+
+ - Index: specify a column and the index contains a copy of this data with pointers to the corresponding rows in the table
+	WHERE clause: the database management system can use this index to fetch the data more quickly than if it had to scan through the entire table row by row.
+	For a table containing few rows, using the index is probably not any more efficient than simply reading the entire table and finding the rows requested by the query (in which case the query optimizer will ignore the index).
+	create an index on the Name column of the Product table:
+
+	CREATE INDEX idx_ProductName
+	ON Product(Name);
+	
+ - Stored procedure: can be run on command
+	change the name of a product based on the specified product ID:
+	
+	CREATE PROCEDURE RenameProduct
+	@ProductID INT,
+	@NewName VARCHAR(20)
+	AS
+	UPDATE Product
+	SET Name = @NewName
+	WHERE ID = @ProductID;
+	
+	EXEC RenameProduct 201, 'Spanner';
 
 ----------------------------
 NON-RELATIONAL DATA IN AZURE
 ----------------------------
 https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-non-relational-data/?source=docs&ns-enrollment-type=Collection&ns-enrollment-id=7qeoue46ny4rpn
-- 
+- Describe features and capabilities of Azure blob storage
+- Describe features and capabilities of Azure Data Lake Gen2
+- Describe features and capabilities of Azure file storage
+- Describe features and capabilities of Azure table storage
+- Provision and use an Azure Storage account
+--------------------------------------------
+Blobs - read and write them by using the Azure blob storage API.
+	container provides a way of grouping related blobs together
+        within a container, organize blobs in a hierarchy of virtual folders 
+        	- using a "/" character in a blob name to organize the blobs into namespaces)
+        	- can't perform folder-level operations to control access or perform bulk operations
+        
 
----------
 
+
+Data Lake Storage Gen2 is used for storing huge amounts of data to be processed by services such as Databricks, Azure Synapse Analytics, and HDInsight. 
+Table storage is used to store key/value pairs in partitions. 
+Azure Files is used to store and share files by using SMB and NFS. 
+Data Lake Storage Gen2 is used to store structured and unstructured data for processing. 
+Page blobs are used for VHDs.
 
 
 
@@ -252,17 +408,8 @@ https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Scatter plots are used to determine a relationship or correlation between two numeric values. 
+Pie charts visually compare different values as a proportion of a total. 
+Line charts are used to examine trends, usually over time. 
+Bar charts are used to compare different values for discrete categories.
 
