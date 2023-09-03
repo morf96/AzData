@@ -59,7 +59,6 @@ Queries can be run on a key or range of keys.
 There can be multiple relationships between entities including hierachical reltionships to support extensive, complex data.
 Makes it easier to perform complex data anaysis and mainly used for social media platforms.
 
-
 12.Non-relational data descriptions with the appropriate data store:
 Object: Large audio and video files that are used as the source for streaming content.
 Document: Semi-structured data with each entitiy providing its own field definitions.
