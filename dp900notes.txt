@@ -1,6 +1,4 @@
 http://marketplace.measureup.com/login
-DP-900: Microsoft Azure Data Fundamentals Certification Practice Test: 7d81ea52-b06e-476d-83eb-098167183c1c-3761 Order Number: 4061428
-
 Collection: https://learn.microsoft.com/en-us/users/pvkovicsrkaangla-0792/collections/7qeoue46ny4rpn
 Challenge: https://learn.microsoft.com/en-gb/users/cloudskillschallenge/collections/1o3xt3rw1mgp?WT.mc_id=cloudskillschallenge_be6235e5-c168-4993-b1bb-e53bade5ddee
 Practice Test: https://learn.microsoft.com/en-gb/certifications/exams/dp-900/practice/assessment?assessmentId=24&assessment-type=practice
