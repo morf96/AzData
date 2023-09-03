@@ -177,6 +177,7 @@ Azure Cosmos DB
 - IoT and telematics: store and access data such as Azure Machine Learning, Azure HDInsight, and Power BI
 - Microsoft uses Cosmos DB for its own e-commerce platforms that run as part of Windows Store and Xbox Live.
 - The Cosmos DB SDKs can be used to build rich iOS and Android applications
+
 - The Gremlin API is used for graph databases, best option for hierarchical data (charts):
 	entities are defined as vertices that form nodes in connected graph
 	two kinds of vertex (employee and department)
@@ -204,7 +205,7 @@ Azure Cosmos DB
 - The Cassandra API is used to retrieve tabular data in a column-family storage, (syntax based on SQL):
 	SELECT * FROM Employees WHERE ID = 2
 
-- The SQL API that is optimized to store and process (transform) JSON files.
+- The SQL (Core) API that is optimized to store and process (transform) JSON files.
 	A SQL query for an Azure Cosmos DB database containing customer data might look similar to this:
 		SELECT *
 		FROM customers c

@@ -327,7 +327,8 @@ Azure File storage is not recommended storage solution for key/value storage imp
 Azure Cosmos DB Core (SQL) API suitable for key/value storage also supported by Azure Table storage and Cosmos Table API.
 The large file share and premium file shares support LRS and ZRS only in Azure File Storage.
 
-3.
+3. Cool tier (Azure blob storage) is optimised for storing data that is infrequently accessed with a lower storage cost than a hot tier.
+The archive tier requires data to be rehydrated as it is stored in an offile storage.
 
 4.
 
@@ -452,7 +453,7 @@ Query Azure Cosmos DB for Gremlin by using Gremlin: https://learn.microsoft.com/
 
 
 20. Implementing an Azure Cosmos DB Data Store will need to use several APIs for each non-realtional data store implementation:
-Key/value store: Table API or Core API
+Key/value store: Table API or Core API (although Core API implements a document-based database to store JSON-like semi-structured data)
 Column family database: Cassandra API only
 Graph database: Gremlin API only
 
@@ -460,6 +461,15 @@ Key-vaule stores are highly optimised for single lookup scenarios, although Core
 Using Core API for new applications use a document with and item ID and a single value field to represent a key-value store.
 
 Azure Cosmos DB Cassandra API is suitable to represent weather or time-series activity, in a column family databse.
+
+https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/tutorial-query
+https://learn.microsoft.com/en-us/azure/cosmos-db/table/tutorial-query
+https://learn.microsoft.com/en-us/azure/cosmos-db/gremlin/tutorial-query
+https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/tutorial-query
+https://learn.microsoft.com/en-us/azure/cosmos-db/choose-api
+https://learn.microsoft.com/en-us/training/modules/explore-non-relational-data-stores-azure/3-cosmos-db-apis
+https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control
+
 
 ------------------------------------------------------------------------------------
 Describe an analytics workload on Azure (37 questions)
@@ -481,8 +491,9 @@ Databricks: https://learn.microsoft.com/en-us/azure/databricks/introduction/
 Azure HDInsight: https://learn.microsoft.com/en-us/azure/hdinsight/hdinsight-overview
 
 3.Databricks can handle batch and stream processing. Complete platform for Big Data procesing and Machine Learning.
-Real-time data processin and event streaming from Azure Event Hubs.
+Real-time data processing and event streaming from Azure Event Hubs.
 Interactive workspace for exploration, data visualisation, collaboration and can run notebooks in R, Python, Scala, SQL.
+Based on Apache Spark.
 Azure Event Hubs: https://learn.microsoft.com/en-us/azure/databricks/structured-streaming/streaming-event-hubs
 
 4.Azure Data Lake store raw data. 
@@ -530,10 +541,10 @@ Datasets in Azure Data Factory and Azure Synapse Analytics: https://learn.micros
 Pipelines and activities in Azure Data Factory and Azure Synapse Analytics: https://learn.microsoft.com/en-us/azure/data-factory/concepts-pipelines-activities?tabs=data-factory
 
 10.Provision services that are compatible with Apache Spark for data processing tasks.
-Azure HDInsight is a bit data processing service that is used to provision and manage a cluster of open-source analytics solutions, such as Apache Spark, Hadoop, Kafka.
-Azure Databricks is a complete platform for big data processing, streaming, machine learning built on top of Apache Spark.
+Azure HDInsight is a Big Data processing service that is used to provision and manage a cluster of open-source analytics solutions, such as Apache Spark, Hadoop, Kafka.
+Azure Databricks is a complete platform for Big Data processing, streaming, machine learning built on top of Apache Spark.
 Should not use Azure Data Factory that is used to ingenst both relational and non-relational data from multiple sources.
-Should not use Azure data Lake storage that is built on top of Azure Blob storage compatible with HDFS file system for anaytics solutions.
+Should not use Azure Data Lake storage that is built on top of Azure Blob storage compatible with HDFS file system for anaytics solutions.
 
 11.Azure Data Factory can export and load data from Azure Blob Storage, Azure data Lake Storage, Azure Cosmos DB, Azure Synapse Analytics, or outside: Amazon S3.
 Azure Data Factory can run SQL Server Integration Service (SSIS) packages using the Execute SSIS Package activiyt. For using Execute SSIS Package activity  configure Azure-SSIS integration runtime (IR).
@@ -597,7 +608,44 @@ Online transaction processing (OLTP): https://learn.microsoft.com/en-us/azure/ar
 
 21.In this scenario select appropriate method of data processing:
 Batch: A finance department needs to reconcile bank transactions against orders once a month.
-Batch: 
+Batch: An insurance company needs to ingest in-car sensor data collected offile when a car connects t a wifi network.
+Streaming: A retail company needs to process anonymous user interactions with its website.
+Streaming: A delivery company needs to track the location of its drivers.
+
+22.
+
+23.
+
+24.
+
+25.
+
+26.Business Intelligence (BI) allows businesses to achieve better decision making by combining technologies, applications, and processess to collect, analyse, and present business information.
 
 
+27.
+
+28.
+
+29. Power BI Service: create an app workspace in Power BI and share its dashboard, also create dashboards from reports.
+Should not use Power BI Desktop to create an app workspace and share its dashboard. 
+Power BI Desktop allows creation of reports and publis them to an app workspace in the Power BI Service.
+
+30.
+
+31. Power BI Service: can create basic reports, dashboards, but it is more common to use Power BI Desktop to create reports for access to more data sources.
+Cannot design data modeling in the Power BI service.
+Power BI Desktop: design data modeling, like creating custom columns and managing model relationships.
+
+32.
+
+33.
+
+34.
+
+35.
+
+36.
+
+37.
 
