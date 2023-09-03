@@ -1,4 +1,4 @@
-http://marketplace.measureup.com/login
+Mindhub: http://marketplace.measureup.com/login
 Collection: https://learn.microsoft.com/en-us/users/pvkovicsrkaangla-0792/collections/7qeoue46ny4rpn
 Challenge: https://learn.microsoft.com/en-gb/users/cloudskillschallenge/collections/1o3xt3rw1mgp?WT.mc_id=cloudskillschallenge_be6235e5-c168-4993-b1bb-e53bade5ddee
 Practice Test: https://learn.microsoft.com/en-gb/certifications/exams/dp-900/practice/assessment?assessmentId=24&assessment-type=practice

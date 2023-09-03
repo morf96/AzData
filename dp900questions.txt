@@ -246,7 +246,7 @@ Identify considerations for relational data on Azure (30 questions)
 
 22.
 
-23.
+23. I have te concept of CosmosDB APIs but will have multiple versions od Azure Database as well?
 
 24.
 
@@ -262,21 +262,52 @@ Identify considerations for relational data on Azure (30 questions)
 
 30.
 
+https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-saas/
 https://binaryterms.com/relational-data-model.html
-https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/relational-vs-nosql-data
-https://learn.microsoft.com/en-us/training/modules/describe-concepts-of-relational-data/2-explore-characteristics
-https://learn.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15
-https://learn.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description
-https://learn.microsoft.com/en-us/sql/relational-databases/views/views?view=sql-server-ver15
-https://learn.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints?view=sql-server-ver15&viewFallbackFrom=sql-server-ver1
-https://learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/5-database-objects
-https://learn.microsoft.com/en-us/azure/storage/tables/table-storage-overview
+https://binaryterms.com/relational-data-model.html
+https://dev.mysql.com/doc/refman/8.0/en/select.html
 https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-overview
+https://learn.microsoft.com/en-us/azure/azure-sql/database/sql-database-paas-overview?view=azuresql
+https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview?view=azuresql
+https://learn.microsoft.com/en-us/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview?view=azuresql
+https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/howto-ssl-connection-security
+https://learn.microsoft.com/en-us/azure/mariadb/overview
+https://learn.microsoft.com/en-us/azure/mysql/select-right-deployment-type
+https://learn.microsoft.com/en-us/azure/postgresql/single-server/concepts-azure-ad-authentication
+https://learn.microsoft.com/en-us/azure/postgresql/single-server/concepts-ssl-connection-security
+https://learn.microsoft.com/en-us/azure/postgresql/single-server/overview
+https://learn.microsoft.com/en-us/azure/storage/tables/table-storage-overview
+https://learn.microsoft.com/en-us/azure/storage/tables/table-storage-overview
+https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/relational-vs-nosql-data
+https://learn.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description
+https://learn.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15
 https://learn.microsoft.com/en-us/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/relational-databases/indexes/indexes?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/relational-databases/stored-procedures/stored-procedures-database-engine?view=sql-server-ver15
 https://learn.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints?view=sql-server-ver15&viewFallbackFrom=sql-server-ver1
+https://learn.microsoft.com/en-us/sql/relational-databases/views/views?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/t-sql/functions/sum-transact-sql?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/t-sql/queries/select-group-by-transact-sql?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/t-sql/queries/top-transact-sql?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/t-sql/statements/create-table-transact-sql?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/t-sql/statements/drop-table-transact-sql?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/t-sql/statements/insert-transact-sql?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/t-sql/statements/statements?view=sql-server-ver15
+https://learn.microsoft.com/en-us/sql/t-sql/statements/truncate-table-transact-sql?view=sql-server-ver15
 https://learn.microsoft.com/en-us/training/modules/describe-concepts-of-relational-data/2-explore-characteristics
 https://learn.microsoft.com/en-us/training/modules/describe-concepts-of-relational-data/3-explore-structures
-
+https://learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/2-data-formats
+https://learn.microsoft.com/en-us/training/modules/explore-core-data-concepts/4-databases
+https://learn.microsoft.com/en-us/training/modules/explore-provision-deploy-non-relational-data-services-azure/
+https://learn.microsoft.com/en-us/training/modules/explore-provision-deploy-relational-database-offerings-azure/2-azure-sql
+https://learn.microsoft.com/en-us/training/modules/explore-provision-deploy-relational-database-offerings-azure/3-azure-database-open-source
+https://learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/4-query-with-sql
+https://learn.microsoft.com/en-us/training/modules/explore-relational-data-offerings/5-database-objects
+https://learn.microsoft.com/en-us/training/modules/query-relational-data/5-azure-database-for-mysql
+https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore-non-relational-data/
+https://www.w3schools.com/sql/sql_ref_keywords.asp
 
 ------------------------------------------------------------------------------------
 Describe considerations for working with non-relational data on Azure (20 questions)
