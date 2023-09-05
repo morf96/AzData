@@ -4,6 +4,8 @@ Challenge: https://learn.microsoft.com/en-gb/users/cloudskillschallenge/collecti
 Practice Test: https://learn.microsoft.com/en-gb/certifications/exams/dp-900/practice/assessment?assessmentId=24&assessment-type=practice
 Exam page: https://learn.microsoft.com/en-gb/certifications/exams/dp-900/
 Labs: https://microsoftlearning.github.io/DP-900T00A-Azure-Data-Fundamentals/
+GitHub: https://github.com/MicrosoftLearning/DP-900T00A-Azure-Data-Fundamentals
+Example deployment: https://github.com/MicrosoftLearning/DP-900T00A-Azure-Data-Fundamentals/blob/master/streaming/setup.sh
 
 ------------------
 CORE DATA CONCEPTS
@@ -167,8 +169,8 @@ Azure Database for open-source relational databases:
 - Azure Database for MariaDB - offers compatibility with Oracle Database, built-in support for temporal data enabling applications to query data as the data appeared in previous points in time.
 - Azure Database for PostgreSQL - a hybrid relational-object database, store data in relational tables or store custom data types, with their own non-relational properties,
                                   another key feature is the ability to store and manipulate geometric data, such as lines, circles, and polygons
-  Exercise: Explore Azure relational database services
-  https://learn.microsoft.com/en-gb/training/modules/explore-provision-deploy-relational-database-offerings-azure/4-exercise-provision-relational-azure-data-services?pivots=azuresql
+  	Exercise: Explore Azure relational database services
+  	https://learn.microsoft.com/en-gb/training/modules/explore-provision-deploy-relational-database-offerings-azure/4-exercise-provision-relational-azure-data-services?pivots=azuresql
 
 Azure Cosmos DB 
 - global-scale non-relational (NoSQL) database system that supports multiple application programming interfaces (APIs), 
@@ -178,14 +180,14 @@ Azure Cosmos DB
 - Microsoft uses Cosmos DB for its own e-commerce platforms that run as part of Windows Store and Xbox Live.
 - The Cosmos DB SDKs can be used to build rich iOS and Android applications
 
-- The Gremlin API is used for graph databases, best option for hierarchical data (charts):
+- The CosmosDB Gremlin API is used for graph databases, best option for hierarchical data (charts):
 	entities are defined as vertices that form nodes in connected graph
 	two kinds of vertex (employee and department)
 	Gremlin syntax includes functions to operate on vertices and edges, enabling you to insert, update, delete, and query data in the graph:
 		g.addV('employee').property('id', '3').property('firstName', 'Alice')
 		g.V('3').addE('reports to').to(g.V('1'))
 	
-- The MongoDB API stores data in the BSON (Binary JSON) format, can be queried by MongoDB Query Language (MQL):
+- The CosmosDB MongoDB API stores data in the BSON (Binary JSON) format, can be queried by MongoDB Query Language (MQL):
 		db.products.find({id: 123})
 	results of this query consist of JSON documents:
 		{
@@ -194,7 +196,7 @@ Azure Cosmos DB
    		"price": 2.99
 		}
 
-- The Table API is used to retrieve key/value pairs (similar to Azure Table Storage)
+- The CosmosDB Table API is used to retrieve key/value pairs (similar to Azure Table Storage)
 			PartitionKey	RowKey	Name		Email
 			1				123		Joe Jones	joe@litware.com
 			1				124		Samir Nadoy	samir@northwind.com
@@ -202,10 +204,10 @@ Azure Cosmos DB
 		Use the Table API through one of the language-specific SDKs to make calls to service endpoints to retrieve data from tables example:
 		https://endpoint/Customers(PartitionKey='1',RowKey='124')
 
-- The Cassandra API is used to retrieve tabular data in a column-family storage, (syntax based on SQL):
+- The CosmosDB Cassandra API is used to retrieve tabular data in a column-family storage, (syntax based on SQL):
 	SELECT * FROM Employees WHERE ID = 2
 
-- The SQL (Core) API that is optimized to store and process (transform) JSON files.
+- The CosmosDB SQL (Core) API that is optimized to store and process (transform) JSON files.
 	A SQL query for an Azure Cosmos DB database containing customer data might look similar to this:
 		SELECT *
 		FROM customers c
@@ -219,7 +221,7 @@ Azure Cosmos DB
         		"city": "Seattle"
     		}
 		}
-- The PostgreSQL API is used to 
+- The CosmosDB PostgreSQL API is used to 
 	PostgreSQL is a relational database management system (RDBMS), define relational tables of data, for example a table of products like this:
 		ProductID	ProductName	Price
 		123			Hammer		2.99
@@ -228,7 +230,6 @@ Azure Cosmos DB
 		SELECT ProductName, Price 
 		FROM Products
 		WHERE ProductID = 123;
-
 
 
 Azure Storage
@@ -255,7 +256,7 @@ Azure Synapse Analytics - provides a single service interface for multiple analy
 
 Azure Databricks
 - Azure-integrated version of the popular Databricks platform.
-- Databricks (and the Apache Spark pool in Azure Synapse Analytics) run data processing for large amounts of data by using Scala.
+- Databricks (and the Apache Spark pool in Azure Synapse Analytics) can run data processing for large amounts of data by using Scala.
 
 Azure HDInsight - Azure-hosted cluster support open-source big data analytics workloads:
 - Apache Spark - a distributed data processing system that supports multiple programming languages and APIs, including Java, Scala, Python, and SQL.
@@ -266,13 +267,24 @@ Azure HDInsight - Azure-hosted cluster support open-source big data analytics wo
 Azure Stream Analytics - used to define streaming jobs
 - Applies a query to extract and manipulate data from the input stream, writes the results to an output for analysis or further processing.
 - Capture streaming data for ingestion into an analytical data store or for real-time visualization.
+	https://learn.microsoft.com/en-gb/training/modules/explore-fundamentals-stream-processing/4-stream-analytics
+	https://microsoftlearning.github.io/DP-900T00A-Azure-Data-Fundamentals/Instructions/Labs/dp900-05-stream-lab.html
+	There can be three main steps defined:
+		The second step represents the "middle" of its architecture.
+			+ The easiest way to use Azure Stream Analytics is to create a Stream Analytics Job in an Azure subscription, 
+			configure its input(s) and output(s), and define the query that the job will use to process the data.
+			The query is expressed using structured query language (SQL) syntax.
+			+ Stream Analysis Cluster is alternative to Stream Analytics Jobs with configurable scalability in a dedicated tenant (so your processing is not affected by other customers).
+		  1. Ingest data from an input, such as an Azure event hub, Azure IoT Hub, or Azure Storage blob container.
+		  2. Process the data by using a query to select, project, and aggregate data values.
+		  3. Write the results to an output, such as Azure Data Lake Gen 2, Azure SQL Database, Azure Synapse Analytics, Azure Functions, Azure event hub, Microsoft Power BI, or others.
 
 Azure Data Explorer 
 - standalone service, high-performance querying of log and telemetry data
 - perform on-demand analysis of large volumes of data from text logs, websites and IoT devices by using a common querying language for all the data sources
 
 Microsoft Purview 
-- enterprise-wide data governance and discoverability
+- Enterprise-wide data governance and discoverability
 - Create a map for data to track data lineage across multiple data sources and systems.
 
 Microsoft Power BI 
@@ -461,7 +473,7 @@ https://learn.microsoft.com/en-us/training/paths/azure-data-fundamentals-explore
 - Identify common types of analytical data store and related Azure services
 - Provision Azure Synapse Analytics and use it to ingest, process, and query data
 ---------------------------------------------------------------------------------
-Data warehousing architecture:
+Data Warehousing Architecture:
 	1. Data ingestion and processing 
 		– data from one or more transactional data stores, files, real-time streams, or other sources is loaded into a data lake or a relational data warehouse. 
 		  The load operation usually involves an extract, transform, and load (ETL) or extract, load, and transform (ELT) process 
@@ -495,6 +507,7 @@ Data ingestion pipelines:
 	5. Run a data processing task on Azure Databricks or Azure HDInsight, or apply custom logic using an Azure Function.
 	   Pipelines can also include some built-in activities, which don’t require a linked service.
 	6. Save the output dataset in a linked service such as Azure Synapse Analytics.
+
 Analytical data stores (two common types, data warehouses, data lakes):
 	- Data lakes
 	- Data warehouses
@@ -504,11 +517,11 @@ Analytical data stores (two common types, data warehouses, data lakes):
 		* Azure Databricks 
 		* Azure HDInsight
 
-	Data Lake is a file store, usually on a distributed file system for high performance data access.
+Data Lake is a file store, usually on a distributed file system for high performance data access.
 		Schema-on-read approach: (without applying constraints when it's stored)
 			Spark or Hadoop are often used to process queries on the stored files and return data for reporting and analytics.
 			Supporting a mix of structured, semi-structured, unstructured data analisation without the need for schema enforcement.
-	Data Warehouse (relational database):
+Data Warehouse (relational database):
 		Data is stored in a schema that is optimized for data analytics rather than transactional workloads.
 		Fact Tables:
 			Data from a transactional store is transformed into a schema in which numeric values are stored in central fact tables.
@@ -518,9 +531,16 @@ Analytical data stores (two common types, data warehouses, data lakes):
 			This kind of fact and dimension table schema is called a star schema.
 			Often extended into a snowflake schema by adding additional tables related to the dimension tables to represent dimensional hierarchies, for example, product might be related to product categories. 
 			A data warehouse is a great choice when you have transactional data that can be organized into a structured schema of tables, and you want to use SQL to query them.
-	Hybrid Approach(Lake Database, Data Lakehouse):
+Hybrid Approach(Lake Database, Data Lakehouse):
+		https://techcommunity.microsoft.com/t5/azure-synapse-analytics-blog/synapse-data-lake-vs-delta-lake-vs-data-lakehouse/ba-p/3673653
 		Combine features of data lakes and data warehouses in a lake database or data lakehouse.
-		Data lake has aw data is stored as files with a relational storage layer abstracts the underlying files and expose them as tables, which can be queried using SQL.
+		Data Lake:
+			Centralized repository for all structured and unstructured data.
+			Stores raw data as files with a relational storage layer abstracts the underlying files and expose them as tables, which can be queried using SQL.
+			Definition schema is not mandatory when storing data, does not need to be fitted into a pre-defined scheme before storage. 
+			Only when the data is processed and read, it is adapted and parsed into a schema. 
+			This saves time which is otherwise spent on schema definition.
+			Delta Lake is an open-source storage layer that adds support for transactional consistency, schema enforcement, and other common data warehousing features to data lake storage.
 		PolyBase:
 			SQL pools in Azure Synapse Analytics include PolyBase, which enables you to define external tables based on files in a datalake (and other sources) and query them using SQL. 
 		Lake Database approach:
@@ -533,7 +553,7 @@ Analytical data stores (two common types, data warehouses, data lakes):
 			Support batch-loaded and streaming data sources.
 			Provide a SQL API for querying.
 
-	Azure services for analytical stores:
+Azure services for analytical stores:
 	Each of these services can be thought of as an analytical data store.
 	They rovide a schema and interface through which the data can be queried.
 	In many cases the data is actually stored in a data lake and the service is used to process the data and run queries.
@@ -573,7 +593,7 @@ Stream processing, in which a source of data is constantly monitored and process
 		Typically use batch processing to perform complex analytics. 
 		Stream processing is used for simple response functions, aggregates, or calculations such as rolling averages.
 
-Combine batch and stream processing to enabling both historical and real-time data analysis (lambda and delta architectures)
+Combine Batch and Stream processing to enabling both historical and real-time data analysis (lambda and delta architectures)
 	1. Data events from a streaming data source are captured in real-time.
 	2. Data from other sources is ingested into a data store (often a data lake) for batch processing.
 	3. If real-time analytics is not required, the captured streaming data is written to the data store for subsequent batch processing.
@@ -583,12 +603,65 @@ Combine batch and stream processing to enabling both historical and real-time da
 	6. The results of stream processing may also be persisted in the analytical data store to support historical analysis.
 	7. Analytical and visualization tools are used to present and explore the real-time and historical data.
 
+General architecture for Stream processing
+1. An event generates some data, a signal being emitted by a sensor, a social media message being posted, a log file entry being written
+2. Source:
+	Generated data is captured in a streaming source for processing, the Source may be a folder in a cloud data store, table in a database, 
+	in a "queue" that encapsulates logic to ensure that event data is processed in order and that each event is processed only once.
+			- Azure Event Hubs: 
+				Data ingestion service that you can use to manage queues of event data, ensuring that each event is processed in order, exactly once.
+			- Azure IoT Hub: 
+				Data ingestion service that is similar to Azure Event Hubs
+				Optimized for managing event data from Internet-of-things (IoT) devices.
+			- Azure Data Lake Store Gen 2: 
+				Scalable storage service that is often used in batch processing scenarios, but which can also be used as a source of streaming data.
+			- Apache Kafka: 
+				Open-source data ingestion solution that is commonly used together with Apache Spark, can use Azure HDInsight to create a Kafka cluster.
+3. Data is processed by query that operates on the event data to select data for specific types of events, project data values, aggregate data values over temporal (time-based) periods (or windows) - for example, by counting the number of sensor emissions per minute.
+4. Sink:
+	Results of the stream processing operation are written to an output (or sink), which may be a file, a database table, a real-time visual dashboard, another queue for further processing by a subsequent downstream query.
+			- Azure Event Hubs: Used to queue the processed data for further downstream processing.
+			- Azure Data Lake Store Gen 2 or Azure blob storage: Used to persist the processed results as a file.
+			- Azure SQL Database or Azure Synapse Analytics, or Azure Databricks: Used to persist the processed results in a database table for querying and analysis.
+			- Microsoft Power BI: Used to generate real time data visualizations in reports and dashboards.	
+
+Real-time analytics of streaming data in Azure:
+	- Azure Stream Analytics: 
+		A platform-as-a-service (PaaS) solution that you can use to define streaming jobs that ingest data from a streaming source,
+		Apply a perpetual query,
+		Write the results to an output.
+    - Spark Structured Streaming: 
+		An open-source library that enables you to develop complex streaming solutions on Apache Spark based services, 
+		including Azure Synapse Analytics, Azure Databricks, and Azure HDInsight.
+    - Azure Data Explorer: 
+		A high-performance database and analytics service that is optimized for ingesting and querying batch or streaming data with a time-series element, 
+		Can be used as a standalone Azure service or 
+		Azure Synapse Data Explorer runtime in an Azure Synapse Analytics workspace.
+
+Apache Spark on Microsoft Azure (distributed processing framework for large scale data analytics)
+	Spark can be used for both batch processing and stream processing
+	Run code (usually written in Python, Scala, or Java) in parallel across multiple cluster nodes
+	Spark Structured Streaming library: provides an application programming interface (API) for ingesting, processing, and outputting results from perpetual streams of data.
+	Dataframe: Spark Structured Streaming is built on a ubiquitous structure in Spark called a dataframe.
+			Called "boundless" dataframe that is continually populated with new data from the stream.
+			Define a query on the dataframe that selects, projects, or aggregates the data. (often in temporal windows)
+			The query generate another dataframe, which can be persisted for analysis or further processing.
+	Read Data into Dataframe: use the Spark Structured Streaming API to read data from a real-time data source (Kafka hub, file store, network port, )
+	Delta Lake: can be used in Spark to define relational tables for both batch and stream processing.
+				adds support for transactional consistency, schema enforcement, and other common data warehousing features to data lake storage.
+				The Spark runtimes in Azure Synapse Analytics and Azure Databricks include support for Delta Lake.
+
+	- Apache Spark in Azure Synapse Analytics:
 
 
+ 	- Apache Spark in Azure Databricks:
 
 
+	- Apache Spark in Azure HDInsight:
 
 
+Data Visulalisation and Power BI
+https://learn.microsoft.com/en-gb/training/modules/explore-fundamentals-data-visualization/2-power-bi
 
 
 
